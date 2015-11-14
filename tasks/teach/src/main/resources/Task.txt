@@ -1,0 +1,348 @@
+Lesson1
+
+1. Add new field - age - to Employee (int)                       +
+2. Get/Set for age                                               +
+3. Override toString() in Director: "DIRECTOR [name]"            +
+4. Unit test for Employee (full Cov =100%)                       +
+5. Unit test for Director                                        +
+6. Override equals() in Employee                                 +
+7. Add javadoc comments for all API (public methods and classes) +
+
+Lesson2
+
+1. Add dependency to google guava                                   +
+2. Add dependency to mockito                                        +
+3. Implement equals (compare fields) in Employee                    +
+4. Implement unit tests for all methods of Employee                 +
+5. Change setName to check empty string                             +
+
+Lesson3
+
+1. Написать unit tests для equals (Employee)                        +
+2. Описать тестовые случ. для всех unit tests                       +
+3. Класс директор, добавить поле название отдела                    +
+4. Переопределить метод equals классе директор                      +
+(дополнительно проверять название отделов)
+5. Написать unit tests для всех методов директора                   +
+6. Добавить конструктор в Employee, который принимает               +
+ имя и возраст + unit test
+
+ Lesson4
+
+ 1. Реализовать тест. случаи в employee test 8.1, 8.2, 8.3                                                                         +
+ 2. Реализовать тест. случаи в directorEmployee test  6.1, 6.2, 10                                                                 + (уточнить)
+ 3. setDepartment написать unit test отдельно                                                                                      +
+ 4. Изменить equals в DirectorEmployee, используя логику equals из Employee через super
+    departament проверять на null                                                                                                  +
+ 5. Добавить конструктор в DirectorEmployee (name, age, department), переиспользуя логику из Employee через super                  +
+ 6. Добавить метод isOldAdministrator() в DirectorEmployee : old : age > 50 , adminitstator : department = IT
+ (+ unit tests)  + (уточнить, можно было так написать "if (this.getAge() > 50 && (a == "IT" || a.equals("IT")))")
+
+ Lesson5
+
+ 1. Добавить в Employee идентификатор (long)                                                                                       +
+ 2. написать метод в Employee, которая меняет идентификатор заданной функцией модификации                                          +
+    changeId(long value, String function); // function: "+", "-", "/", "*". "%"
+    example: id=1000; changeId(100, "+") => id = 1100; // ! - changeId (0, "/") => id = id/0;
+
+  Lesson6
+  1. Первая ссылка Employee вторая directorEmployee все общие поля одинаковые (equals employee)   -                                                         +
+  2. Оптимизировать chengeId - вызвать setId только один раз в нем                                                                                          +
+  2.1 Оптимизировать chengeId -  избежать лишних проверок в случ. найденой операции (сейчас постоянно идет проверка по всем if)                             +  уточнить про %
+  2.2 Измен. chengeId - бросить искл. ситуацию UnsupportedOperationException в случ. когда вход операция не соответствует ожидаемой                         + (уточнить)
+  2.3 Измен. chengeId - обробатывать ситуацию когда входная операция может быть любым объектом (String oper = new String("+"); сейчас работать не будет)    ? (уточнить)
+  2.4 Добавить тесты chengeId - проверить все операции, ожидаемые и не ожидаемые, проверить деление на ноль                                                 +
+  3. Реализовать метод в Employee, который проверяет, является ли идентификатор простым числом (простое число - число, которое делится только на 1 и на само себя)            + (check out)
+
+
+ Lesson7
+ 1. Employee test и DirectorEmployee test переделать (рефактооринг - изменить код не изменяя его функциональность)  все тест. случ. перенести в отдельные тест.методы            +
+ 2. Написать тест случ. когда function = null для changId                                                                                                                        +
+ 3. Убрать в changId деление с большим значением и возврат. 0 (т.к. это само собой получится)                                                                                    +
+ 4. Id не может быть отрицательным числом, если вдруг получилось отрицательным числом то  (брость IllegalStateException)                                                         +
+ 5. Перегрузить метод changeId, который принимает (long id) (ID не может быть отрицательным) + тесты                                                                             +
+ 6. Перегрузить метод changeId, который принимает (String function, long value) - логика переипользуется из changeId(long value, String function) + тесты                        + ?
+ 7. Переопределить changeId(long value, String function) в DirectorEmployee - Id не может быть меньше 1000 - логика переипользуется из базового класса Employee + тесты          +
+ 8. Переопределить changeId(long id) в DirectorEmployee - Id не может быть меньше 1000 - логика переипользуется из базового класса Employee + тесты                              +
+ 9. Перегрузить changeId, который принимает (String id) - переводит в число                                                                                                      +
+
+Lesson8
+1. Тест PrimeNumber проверка числа 1 (должно быть не простым числом)                                                                                              +
+2. Оптимизировать метод PrimeNumber - уменьшить колл. проверок (уменьшить правую границу условий)                                                                 + todo
+3. Удалить код коментир.                                                                                                                                          +
+4. Test coverage должен быть 100% у Employee и  DirectorEmployee                                                                                                  + (в DirectorEmployee не могу проверить тест if (!(obj instanceof DirectorEmployee)) { return false; } )
+5. Поправить тесты, ошибкок не должно быть (предвидеть)                                                                                                           +
+6, Написать тест случ. когда function = null для changId   - должен быть результат NullPointerException                                                           +
+7. ChangeId  (long id) тест на id = 0                                                                                                                             +
+8. В Employee проверку на корректность id (id должен быть >= 0) сделать в виде отдельного метода и его использовать во всех местах где идет проверка test         +
+9. В DE убрать переопределение changeId но переопределить проверку на корректность id                                                                             +
+10. Написать test changeId которое приним String id с id = "abc"  должен бросить exception IllegalArgumentException                                               +
+11. Добавить в DE набор подчиненных (Employee) в виде массива. Количество подчиненных определяется в конструкторе DE                    +    (почему массив Employee, а не String ,--- можно написать так в конструкторе - Employee[] subordinates = new Employee[subordinatesNumber]; ?--- void нужет у конструктора? --- )
+Employee[] subordinates  = ....
+addSubordinate(Employee subordinate) {
+   subordinates[..]  = subordinates;
+}
+12. Метод в DE - Добавить подчиненного                                                                                                  +
+13. Метод в DE - Удалить подчиненного                                                                                                   +
+14. Метод в DE - Заменить подчиненного                                                                                                  +                         -     ? почему в print нельзя написать System.out.println(i + " = " + employee1);    ---- for (Employee subordinate : subordinates) {.... ---  что это значит
+15. Метод в DE - Переопрделить toString - выводить дополнительно всех подчиненных и их количество                                       +
+
+Lesson9
+1. Поправить название метода checkIdAndSetMoreZero на checkIdAndSetId                                                                   +
+2. Убрать дублирующую логику checkIdAndSetMoreZero в DE а переопределять только число (id < 1000)                                       -
+
+Lesson10
+1. Убрать array из описания методов ( Метод в DE - Добавить подчиненного    Метод в DE - Заменить подчиненного    Метод в DE - Удалить подчиненного             +                                                                               +
+2. Задекларировать что методы в DE могут бросать exception и задокументировать это                                                                              +?
+3. Создать private метод поиска подчиненого (возвращает index подчиненого)                                                                                      +
+4. В методе DE заменить код по поиску на вызов метода из пункта 3.                                                                                              +
+5. Изменитть проверки тестовых методов DE добав,удален,замена (гарантировать что метод работает правильно)
+ (для addsubordinate - после добавления очередного подчиненого проверять всех подчиненых в директоре, добав. до максимума)                                      -
+6. в тестах DE добавить для у.и. возможность передачи входного параметра в виде клона а не той же ссылки что уже есть в массиве                                 +
+7. DE toString должен возвращать инф. о директоре с перечислением всех подчиненых и их колличестве (удал. вывод на экран)                                       -
+8. добавить метод в DE выдающий инф. об актуальном колличестве сотрудников.                                                                                     +
+9. метод checkIdAndSetId перевести в максимально закрытый режим (protected или private)                                                                         +
+10. Убрать дублирующую логику checkIdAndSetMoreZero в DE а переопределять только число (id < 1000)                                                              +
+11. В Employee добавить статический метод статистики - выдает сумму Id всех объектов Employee и DE (return long)                                                +
+12. Вычислить СКО (средне-квадратичное отклонение Id) для всех подчиненных DE, используя методы из Math - в отдельном классе EmployeeStatistic (static method)  -
+   n = amountSubordinates,
+   xi = подчин. из массива
+   x_ = среднее (сумма всех id деленная на их колличество(n))
+
+
+lesson 11
+1. Сделать рефакторинг метода SearchIndex таким образом что бы был только один return  и один if                                                                   +
+2. setSubordinate должен обрабатывать ситуацию когда индекс не корректный                                                                                          +?
+3. Изменитть проверки тестовых методов DE добав,удален,замена (гарантировать что метод работает правильно)
+    (для addsubordinate - после добавления очередного подчиненого проверять всех подчиненых в директоре, добав. до максимума)                                      +
+4. Исправить toString, если сотрудников у директора нет, то после колличества ставить точку(сейчас :), после всех сотрудников ставить не запятиую а точку.         -!
+5. isIdCorrect должен возвращать String. если id корректен то String = null, а если не корректен то сообщение об ошибке которое прокидывается в Exception          +
+6. Исправить тест на getSumId сейчас валится                                                                                                                       +
+7. Избавиться от ограничения на максимальное колличество сотрудников                                                                                               -?
+8. 12. Вычислить СКО (средне-квадратичное отклонение Id) для всех подчиненных DE, используя методы из Math - в отдельном классе EmployeeStatistic (static method)  +?
+      n = amountSubordinates,
+      xi = подчин. из массива
+      x_ = среднее (сумма всех id деленная на их колличество(n))
+
+Lesson 12
+1. Написать отдельный тесты для setSubordinates что бы охватывал все ситуации                                                                                      + todo (уточнить как лучше передьти в index < 0 setSubordinate) придумать еще варианты тестов(К) (вопрос: нужно писать тест на )
+2. searchIndex не должен бросать exception (должен вернуть -1 если ничего не нашел и клиенты этого метода должны бросать ошибку если вернулась -1),                +
+3. setSubordinates должен бросить exception если  searchIndex вернул не -1                                                                                         + todo проверить тесты еще раз
+4. Рефакторинг toString (1. цикл заменить на foreach 2.точку в конец добавлять только один раз.)                                                                   + todo еще раз пройти по коду все запомнить
+5. Удалить из DE конструктора количество сотрудников - теперь это должен быть динамический параметр.                                                               -
+6. Добавление и удаление должны изменять размер массива                                                                                                            + todo тесты написать, проверять если масив пустой(-1 не может быть при удалении)
+7. количество актуальнных сотрудников - размер массива
+
+Lesson13
+1. Рефакторинг Вычислить СКО,  и переименовать  и тесты                                                                        +
+2. Реализовать все возможные тесты для setSubordinates                                                                   +    todo спросить 8. set empty subordinate
+3. Remove commented code                                                                                                                         +
+4. DE - only dynamic array (remove static add/delete)                                                                +
+5. Describe test cases for methods of DE with subordinates                                                           +
+6. Implement test cases in DE                                                                                        +
+7. Make hierarchy: Генеральный директор - фин. дир (бухгалтер, директор по развитию, сотрудник отдела кадров),       -
+ дир по производству (дир. по тестированию (...), дир. по конвейеру), дир по рекламе
+   Описать в виде композиции объектов DE и E. И вывести на экран.
+   Создать класс Company и метод printHierarchy через SEO.toString()
+
+Lesson14
+1. В СКО for each поставить и написать все тесты в DE                                                                   +
+2. addSubordinate должен обробатывать момент когда employee не про инициализирован (долж. выдавать ошибку) + тесты      +
+3. DeleteSubordinate написать более качественные тесты (удалять первый элемент, из середины и последний)                +
+4. printHierarchy должен выводить в читабельном виде (подчиненные с новой строки и с отступами)                         -
+5. Создать IEmployee интерфейс для Employee                                                                             -
+6. Создать IDE интерфейс для DE                                                                                         -
+7. ПОдчиненные в DE - это объекты интерфейсы IEmployee                                                                  -
+
+Lesson15
+1. Вычисление СКО 5 сотрудников                                                                                         + todo уточнить с проверкой assertEquals(expected, actual, delta)
+2. addSubordinate добавить тесты к примеру age = 0 а остальное все нормально установлено, или только id                 +
+3. Написать  deleteFirst , deleteLast, deleteMiddle отдельные тесты                                                     +
+4. Изменить DE.toString, чтобы иерархия выводилась праивльно с отступами                                                +
+5. Предментная область - Калькулятор. Описать словами.                                                                  +
+
+Lesson16
+1. Изменить DE.toString, чтобы иерархия выводилась праивльно с отступами   todo тесты и еще сотрудников добавить        +  ? уточнить как работает linePrefix, почему табуляция сохряняется в нем, String
+2. Описать разделы, выделить сущности
+
+Lesson17
+1. Описать приоритеты + - идут за * /
+2. Предмет. область описать по другому, а что есть перенести в интерфейс пользователя
+3. Описать функции, написать требования и т.д.
+4. Написать комментарии и по ним написать тесты
+5. Написать в Company метод loadHierarchy, который читает из файла (создать тектсовый файл) информацию о сотрудниках,создает объекты с нужными полями и добавляет в иерархию.
+Строка в файле: (id name type boss_id)
+boss_id = null - то это самый главный
+
+
+Lesson18
+1. Перенести ошибки в требование                                                                                         +
+2. Написать interface OperationItem (написать метод который произведет операцию)                                         +
+3. Написать классы для кажной операции (+ - и т наследники от OperationItem )                                            +
+4. Написать тесты для каждого класса операций                                                                            +
+ 4.1 Написать класс реализующий ArithmeticExpression и тест                                                              +
+5. Написать тесты для calculatorTest                                                                                     +
+6. Реализовать класс калькулятор (не учитывать приоритет операций)                                                       +
+
+
+Lesson19
+1. ArithmeticExpression - array->list                                                                                   +
+
+Lesson20
+1. Create interface MyList (Employee) (size, add, get(index), get(object), contains(object))                            -
+2. Make tests for MyList                                                                                                -
+3. Implement class MyArrayList (array).                                                                                 -
+
+Lesson21
+1. Add validate() to ArithmeticExpression and use it in Calculator                                      +
+2. Learn Postfix-form of expressions                                                                    +
+3. Implement algorithm: expression -> postfix expression                                                +
+4. Implement User Interface for Calculator                                                              -
+
+Lesson22
+1. Добавить в MyList метод удалить Employee, и                                                          +
+2. Дополнить комментарии к IMyList                                                                      +
+3. Тесты для  validate                                                                                  +
+4. Добавить тесты на метод convertToPolish                                                              +
+5. использовать Generics для IMyList (тип  - наследник от Employee)                                     +
+6. Учитывать приоритет операции (Операция имеет атрибут - приоритет)                                    -
+7. Учитывать группировку в выражении - 2 + (7+5)*4 = польская = 275+4*+ : 2 12 4 * + = 2 48 + = 50      -
+(2+3*5) = (235*+) 1. (2 15 +)
+
+Lesson23
+1. Написать правило-шаблон для правильного email                                                        +
+
+Lesson 24
+1. В MyList addEmployee - можно добав. одинаковых сотрудников(сейчас нет, исправить)                     +
+1. MyList add если входной Employee null бросить NullPointerException (NPE сокр.)                        +
+3. MyList add тест на размер после добавления                                                            +
+4. MyList  обновить комментарии ко всем методам                                                          +
+5. MyList deleteByIndex добавить тесты (5 тестов должно быть)                                            +
+6. MyList проверка для size                                                                              +
+7. reverseStack переписать                                                                               +
+
+Lesson 25
+1. delete все копии в array                                                                              +
+2. getIndexByEmployee передать null должен вернуть -1                                                    +
+3. тесты  containsEmployee                                                                               +
+4. в тестах Employee поменять Exception на  IllegalArgumentException                                     +
+5. myListTest убрать Exception у тестов                                                                  +
+6. Реализовать calculate() через временный буфер-стек:                                                   +
+// 1 + 2*3 = 123*+
+// 1 -> push (1)
+// 2 -> push (2, 1)
+// 3 -> push (3, 2, 1)
+// * -> pop 3 + pop 2 (1)
+// 6 -> push (6, 1)
+// + -> pop 6 + pop 1 (0)
+// 7
+7. Implement   .remove                                                                                   +
+
+Lesson 26
+1 убрать Exception в delete                                                                              +  добавил int
+2. Implement MyLinkedList                                                                                +  спросить про addNull
+
+Lesson 27
+1. Оптимизировать и исправить ошибку convertToPolish2                                                    +
+2. AE конструктор со строкой (распарсить)                                                                +
+
+
+lesson 28
+1. В deleteByIndex написать тест на удаление последнего элемента, last должен измениться и после добавить новый элемент          +
+
+lesson 29
+1. Переделать deleteByIndex при помощи deleteNode                                                 +
+2. исправить deleteEmployee при помощи deleteNode                                                 +         node: 1. when deleting 4 elements, there is moment when last = null but first != null. 2.Ask about the counter.
+3. Попробовать убрать избыточность в convertToPolishExpression3 и удалить все старые методы       - ?
+
+lesson 30
+1. Написать два варианта вычисления факториала                                                    +
+1.1 через for цикл                                                                                -         node: 1. показать     - просто for
+1.2 через рекурсию                                                                                +
+факториал: 5! = 1*2*3*4*5
+2. Написать класс, объект которого можно создать только в единственном экземпляре.                +
+2.1 в конструкторе эксепшен, если второй объект создается                                         +
+2.2 нет возможности вызова конструктора                                                           -? node: спросить
+
+lesson 31
+1. В кальк. использовать operationFactory                                                          +
+2. Тесты на выраж. с пробелом.                                                                     +
+3. Парсинг строки перенести в конструктор ArithmeticExpression                                     +
+4. Написать класс static методами которые позвол. работать с днями недели.                         +
+   - int getNextDay(int day)
+   - boolean isWeekend(int day)
+
+lesson 32
+1. написать программму, которая принимает страницу поиска яндекса и выводит все
+ссылки на экран (пример, http://a.com/d/df, https://abra.kadarab.ru/a/1/4.html,....)             -
+
+lesson 33
+
+1. В в operationItem поменять в toString - использовать getOperation                              +
+2. В OperationFactory availableOperations переделать Arrays.toString(operations))
+ - использовать operation.getOperation                                                            +
+3. Исправить boolean isWeekend(int day) сейчас 600 проходит как выходной.                         +
+4. Написать класс static методами которые позвол. работать с днями недели.                        -
+   - int getNextDay(int day)
+   - boolean isWeekend(int day)
+   -добавить метод который принимает строку date в формате "12.04.2010" и возвра. день
+    недели соответствующий этой дате                                                              -
+5. написать регулярное выражение для адреса (123765, Спб, Энгельса пр., 123 / 5):                 -?
+             - индекс, город, улица, дом, квартира
+             - индекс, город, улица, дом
+             - индекс, город
+             - город, улица, дом, квартира
+             - город, улица, дом
+             - город
+
+lesson 34
+1. Change PatternTeach - show only numbers                                                         - уточнить
+
+
+lesson 35
+1. Не использовать split  в задаче со ссылками, а только рег.выраж.                                                ?-
+2. Класс адрес сделать и тесты написать.                                                                            - уточнить как делать что бы не добавлялась улица на место города или дом на место квартиры
+3. Change PatternTeach - show only numbers(числа не цифры)                                                         - уточнить почему не показывает "9"
+4. Есть Map (map) с числами. Есть метод статистики, который принимает Map. Нужно гарантировать, что вызвав calculateStatistic(map) map не изменится.
+
+lesson 36
+
+lesson 37 - 38
+1. TreeTeach: вывести узлы (toStringWide) в ширину
+
+
+lesson 39
+
+
+lesson 40
+
+lesson 41
+
+lesson 42
+1. Describe class hierarchy for lists and sets
+2. Describe class hierarchy for maps
+3. Implement in ComparableTeach
+
+lesson 45
+1. Implement FileLineReader - читает файл по строкам через Iterator
+  class FileLineReader {
+      Iterator<String> readFile(String filename);
+
+  }
+  FileLineReader reader = new FileLineReader();
+  Iterator<String> it = reader.readFile("C:\Users\homek\IdeaProjects\work_java\tasks\teach\src\main\java\ru\teach\skype\types\iterator\IteratorTeach.java");
+  for (String line : reader.readFile("C:\Users\homek\IdeaProjects\work_java\tasks\teach\src\main\java\ru\teach\skype\types\iterator\IteratorTeach.java")) {
+     ...
+  }
+
+  lesson 46
+  1. придумать класс, где логически правильно использовать все типы внутренних классов.
+  2. составить таблицу всех типов внутренних классов и их различий
+
+lesson 47
+1. Move Task.txt to regular folder
+2. Написать класс Period, который выдает интервал между двумя датами (заданы в миллисекундах). Интервал - читаемый для человека. Например, 1 year 5 days and 30 seconds
+
+
+
+

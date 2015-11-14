@@ -1,0 +1,63 @@
+1.
+class B {}
+class A extends B {
+  void f(){}
+}
+class C extends B {
+}
+
+A a = new A()..
+a instanceof A -> true
+a instanceof B -> true
+
+B b = new A();
+b instanceof A -> true
+b instanceof B -> true
+b instanceof Object -> true
+
+A a = null;
+a instanceof A -> false
+a instanceof B -> false
+a instanceof Object -> false
+
+A a1 = new B(); - complication error
+
+Object o = new A(); - ok
+o.f() - complication error
+A a2 = (A) o;
+a2.f();
+
+A a3 = new C(); - compilation error
+
+A a4 = new A();
+C c1 = (C) a4; - complication error
+
+B b1 = new A();
+C c2 = (C) b1; - runtime error (ClassCastException)
+
+Object o1 = null;
+C c3 = (C) o1; - ok
+
+2.
+class A {f();}
+class B {f();}
+class C extends A, B {} - complication error (only one class is supported for extending)
+
+3.
+A a1 = ..
+A a2 = ..
+a1 == a2 ?
+
+3. equals implementation: class A { int id; boolean equals(Object input); }
+1) if (input == null) -> return false
+2) if (!(input instanceof A)) - return false
+3) this link is th same as input link
+if (this == input) -> return true
+4) A a = (A) input;
+if (a.id == this.id) -> return true
+5) return false;
+
+4.
+null instanceof Object -> false
+
+
