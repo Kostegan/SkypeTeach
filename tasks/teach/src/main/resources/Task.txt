@@ -344,5 +344,5 @@ lesson 47
 2. Написать класс Period, который выдает интервал между двумя датами (заданы в миллисекундах). Интервал - читаемый для человека. Например, 1 year 5 days and 30 seconds
 
 
-
-
+lesson 48
+1. Create document with common git commands (pull, push, checkout, branch)
