@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<db>
+    <entity class="ru.teach.skype.types.reflection.Person" table="users">
+        <constructor fields="name age"/>
+        <field name="name" value="Oleg" column="NAME"/>
+        <field name="age" value="25"/>
+        <method method="calcStats"/>
+    </entity>
+</db>

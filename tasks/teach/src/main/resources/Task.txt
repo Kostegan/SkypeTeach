@@ -346,3 +346,8 @@ lesson 47
 
 lesson 48
 1. Create document with common git commands (pull, push, checkout, branch)
+
+lesson 50
+1. Add Java level to root pom.xml (1.7 or 1.8)
+2. Implement ObjectDao (format scheme, creation sql + tests)
+3. Create class example and use it for ObjectDao
