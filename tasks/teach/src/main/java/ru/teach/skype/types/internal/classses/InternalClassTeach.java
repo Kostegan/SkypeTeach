@@ -21,7 +21,7 @@ public class InternalClassTeach {
         name = "Piter";
     }
 
-    public InternalClassTeach(String name) {
+    public InternalClassTeach(final String name) {
         this.name = name;
         NonStaticInternalClass internalObj = new NonStaticInternalClass(2);
         NonStaticInternalClass internalObj2 = new NonStaticInternalClass(4);
@@ -38,7 +38,7 @@ public class InternalClassTeach {
         };
 
 
-        String city = "Spb";
+        final String city = "Spb";
 
         Button button = new Button();
         button.addActionListener(new ActionListener() {
