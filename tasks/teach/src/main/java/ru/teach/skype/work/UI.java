@@ -114,7 +114,7 @@ public class UI {
 
         //Create the frame and set its content pane
 
-        JFrame frame = new JFrame("UI");
+        JFrame frame = new JFrame("ui");
         frame.setContentPane(windowContent);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
