@@ -8,10 +8,11 @@ public interface IUser {
     String getName();
     void setLastName(String lastName);
     String getLastName();
-    void setPhone(int phone);
-    int getPhone();
+    void setPhone(long phone);
+    long getPhone();
     void setEmail(String email);
     String getEmail();
     void setPassword(String password);
     String getPassword();
+    String printUser();
 }

@@ -1,8 +1,6 @@
 package ru.test.skype.base.user;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,8 +8,11 @@ import java.util.List;
  *
  */
 public class Base implements IBase {
-    private ArrayList<String> base;
+    private ArrayList<IUser> base = new ArrayList<>();
     private BufferedReader reader;
+    private BufferedWriter writer;
+    private String pathToBase = "C:\\GitHub\\SkypeTeach\\tasks\\test\\src\\main\\resources\\base";
+
 
     public Base() {
 
@@ -19,12 +20,22 @@ public class Base implements IBase {
 
     @Override
     public void addUser(IUser user) {
+        base.add(user);
+    }
 
+    @Override
+    public void updateBase() throws IOException {
+        writer = new BufferedWriter(new FileWriter(pathToBase));
+        for(int i = 0; i<base.size();i++){
+            writer.write(base.get(i).printUser());
+            writer.newLine();
+        }
+        writer.close();
     }
 
     @Override
     public boolean removeUser(IUser user) {
-        return false;
+        return base.remove(user);
     }
 
     @Override
@@ -32,10 +43,32 @@ public class Base implements IBase {
         return false;
     }
 
+    /**
+     * At first this method gets the one user from base as one string,
+     * then separates the string of parts
+     * and then creates a user with the received data.
+     * @return
+     * @throws IOException
+     */
     @Override
-    public List<String> getBase() {
-        return null;
+    public void getBase() throws IOException {
+        String temp;
+        String[] userFromBase;
+        IUser tempUser;
+        connectBase();
+        while((temp = getOneStringFromBase())!=null){
+            userFromBase = splitsString(temp);
+            tempUser = createUser(userFromBase[0],userFromBase[1],userFromBase[2],userFromBase[3],userFromBase[4]);
+            base.add(tempUser);
+        }
+        closeStream();
     }
+
+    private boolean connectBase()throws IOException{
+        reader = new BufferedReader(new FileReader(pathToBase));
+        return true;
+    }
+
 
     /**
      * Opens a input stream and retrieves one line from base.
@@ -43,18 +76,32 @@ public class Base implements IBase {
      * @return one line from base.
      */
     private String getOneStringFromBase() throws IOException {
-        String pathToBase = "C:\\GitHub\\SkypeTeach\\tasks\\test\\src\\main\\resources\\base";
-        reader = new BufferedReader(new FileReader(pathToBase));
         return reader.readLine();
     }
 
+    // Creates new User
+    private IUser createUser(String name, String lastName, String phone, String email, String password){
+        long phoneInt = Long.parseLong(phone);
+        IUser user = new User(name,lastName,phoneInt,email,password);
+        return user;
+    }
+
     // Splits string by ",".
-    private String splitsString(String string){
-        return "";
+    private String[] splitsString(String string){
+        String delims = "[,]";
+        String[] temp  = string.split(delims);
+        return temp;
     }
 
 
     private void closeStream() throws IOException{
         reader.close();
+    }
+
+    @Override
+    public void printBase() {
+        for(IUser user : base){
+            System.out.println(user.printUser());
+        }
     }
 }

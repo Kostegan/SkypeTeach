@@ -1,5 +1,6 @@
 package ru.test.skype.base.user;
 
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -13,5 +14,9 @@ public interface IBase {
     //change user from a base. If the base has not this user, returns false.
     boolean changeUser(IUser user);
     //retrieves a base from disc, creates list with all users.
-    List<String> getBase();
+    void getBase() throws IOException;
+    //prints users from base
+    void printBase();
+    //Updates base - writes all users of local base to a file in a disc.
+    void updateBase() throws IOException;
 }

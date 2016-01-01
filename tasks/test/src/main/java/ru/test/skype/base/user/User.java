@@ -6,9 +6,25 @@ package ru.test.skype.base.user;
 public class User implements IUser {
     private String name;
     private String lastName;
-    private int phone;
+    private long phone;
     private String email;
     private String password;
+
+    public User() {
+    }
+
+    public User(String name, String lastName, long phone, String email, String password) {
+        this.name = name;
+        this.lastName = lastName;
+        this.phone = phone;
+        this.email = email;
+        this.password = password;
+    }
+
+    @Override
+    public String printUser() {
+        return "User name - " + name + ", lastName - " + lastName + ", phone - " + phone + ", email - " + email + ", password - " + password + ".";
+    }
 
     @Override
     public void setName(String name) {
@@ -31,12 +47,12 @@ public class User implements IUser {
     }
 
     @Override
-    public void setPhone(int phone) {
+    public void setPhone(long phone) {
         this.phone = phone;
     }
 
     @Override
-    public int getPhone() {
+    public long getPhone() {
         return phone;
     }
 
