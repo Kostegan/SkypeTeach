@@ -15,4 +15,5 @@ public interface IUser {
     void setPassword(String password);
     String getPassword();
     String printUser();
+    public String createAllInfo();
 }

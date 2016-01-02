@@ -26,6 +26,14 @@ public class User implements IUser {
         return "User name - " + name + ", lastName - " + lastName + ", phone - " + phone + ", email - " + email + ", password - " + password + ".";
     }
 
+    /**
+     * Creates a string with elements name, lastName, email, phone, password all elements  through comma
+     */
+
+    public String createAllInfo(){
+        return name + "," + lastName + "," + phone + "," + email + "," + password;
+    }
+
     @Override
     public void setName(String name) {
         this.name = name;

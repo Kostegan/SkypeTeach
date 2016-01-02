@@ -27,7 +27,7 @@ public class Base implements IBase {
     public void updateBase() throws IOException {
         writer = new BufferedWriter(new FileWriter(pathToBase));
         for(int i = 0; i<base.size();i++){
-            writer.write(base.get(i).printUser());
+            writer.write(base.get(i).createAllInfo());
             writer.newLine();
         }
         writer.close();
