@@ -40,9 +40,9 @@ public class DownloaderEngine implements IDownloaderEngine {
             if(in != null){
                 try {
                     in.close();
-//                    fOut.close();
-//                    buffer.close();
-//                    bufferOs.close();
+                    fOut.close();
+                    buffer.close();
+                    bufferOs.close();
                 } catch (IOException e){
                     e.fillInStackTrace();
                 }
