@@ -11,6 +11,9 @@
 
     <name>Java By Skype</name>
 
+
+
+
     <modules>
         <module>tasks</module>
     </modules>
