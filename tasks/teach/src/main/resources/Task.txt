@@ -353,11 +353,11 @@ lesson 50
 3. Create class example and use it for ObjectDao
 
 lesson 51
-1. todo Create classes Scheme and SchemeField
-2. todo Implement scheme parsing using RegExp
-3. todo Install MySQL
-4. todo Install Mysql client tool
-5. todo Add dependency to MySQL jdbc driver to maven
+1. todo Create classes Scheme and SchemeField                                  -
+2. todo Implement scheme parsing using RegExp                                  -
+3. todo Install MySQL                                                          -
+4. todo Install Mysql client tool                                              -
+5. todo Add dependency to MySQL jdbc driver to maven                           -
 
 Update Users set Salary=Salary*0.05 where age>50
 
