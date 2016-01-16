@@ -22,4 +22,5 @@ public class ObjectDaoTest {
         IObjectDao dao = createObjectDao();
         dao.save(person,scheme);
     }
+
 }
