@@ -28,6 +28,7 @@
         <module>comparable</module>
         <module>questions</module>
         <module>web</module>
+        <module>reflection</module>
     </modules>
 
 </project>
