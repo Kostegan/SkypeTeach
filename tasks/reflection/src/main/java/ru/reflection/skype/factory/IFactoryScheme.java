@@ -9,5 +9,11 @@ import ru.reflection.skype.factory.scheme.exception.NotCorrectSchemeException;
 
 
 public interface IFactoryScheme {
+//    IScheme getSchemeByClassName(String className);
+//
+//    void registerScheme(String scheme);
+//
+//    void registerScheme(IScheme scheme);
+
     IScheme parseScheme(String scheme) throws NotCorrectSchemeException;
 }

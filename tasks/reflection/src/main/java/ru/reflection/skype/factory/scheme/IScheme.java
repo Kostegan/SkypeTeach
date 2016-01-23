@@ -14,5 +14,5 @@ public interface IScheme {
     String getTableName();
     void setTableName(String nameTable);
     ArrayList<ISchemeField> getFields();
-    void setFieldsName(String fieldName, String columnName);
+    void setFieldName(String fieldName, String columnName);
 }
