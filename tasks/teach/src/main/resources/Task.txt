@@ -1,3 +1,9 @@
+lesson 54
+1. TODO encapsulate DaoDatabase in userDao (clients of userDao should not create DaoDatabase and use preconfigured userdao)
+2. TODO userDao has 2 constructors: default (DaoDatabase used) and with IDaoDatabase
+3. TODO Change USer class to use with Sex class instead of string and int fields for it
+4. TODO Transform ISex to enum
+
 lesson 53
 1. create DB scheme: internet_shop
 2. create table sex
@@ -13,6 +19,46 @@ lesson 53
 lesson 52
 1. todo Run main in DatabaseTeach
 
+
+
+lesson 51
+1. Create classes Scheme and SchemeField                                  +
+2. Implement scheme parsing using RegExp                                  +
+3. Install MySQL                                                          +
+4. Install Mysql client tool                                              +
+5. Add dependency to MySQL jdbc driver to maven                           +
+
+Update Users set Salary=Salary*0.05 where age>50
+
+Update Users set Salary=500 where user_id=100
+
+
+
+lesson 50
+1. Add Java level to root pom.xml (1.7 or 1.8)                               +
+2. Implement ObjectDao (format scheme, creation sql + tests)
+3. Create class example and use it for ObjectDao
+
+
+
+
+lesson 48
+1. Create document with common git commands (pull, push, checkout, branch)
+
+
+
+
+lesson 47
+1. Move Task.txt to regular folder
+2. Написать класс Period, который выдает интервал между двумя датами (заданы в миллисекундах). Интервал - читаемый для человека. Например, 1 year 5 days and 30 seconds
+
+
+
+lesson 46
+1. придумать класс, где логически правильно использовать все типы внутренних классов.
+2. составить таблицу всех типов внутренних классов и их различий
+
+
 Lesson1
 
 1. Add new field - age - to Employee (int)                       +
@@ -22,6 +68,8 @@ Lesson1
 5. Unit test for Director                                        +
 6. Override equals() in Employee                                 +
 7. Add javadoc comments for all API (public methods and classes) +
+
+
 
 Lesson2
 
@@ -350,32 +398,6 @@ lesson 45
      ...
   }
 
-  lesson 46
-  1. придумать класс, где логически правильно использовать все типы внутренних классов.
-  2. составить таблицу всех типов внутренних классов и их различий
 
-lesson 47
-1. Move Task.txt to regular folder
-2. Написать класс Period, который выдает интервал между двумя датами (заданы в миллисекундах). Интервал - читаемый для человека. Например, 1 year 5 days and 30 seconds
-
-
-lesson 48
-1. Create document with common git commands (pull, push, checkout, branch)
-
-lesson 50
-1. Add Java level to root pom.xml (1.7 or 1.8)                               +
-2. Implement ObjectDao (format scheme, creation sql + tests)
-3. Create class example and use it for ObjectDao
-
-lesson 51
-1. todo Create classes Scheme and SchemeField                                  -
-2. todo Implement scheme parsing using RegExp                                  -
-3. todo Install MySQL                                                          -
-4. todo Install Mysql client tool                                              -
-5. todo Add dependency to MySQL jdbc driver to maven                           -
-
-Update Users set Salary=Salary*0.05 where age>50
-
-Update Users set Salary=500 where user_id=100
 
 
