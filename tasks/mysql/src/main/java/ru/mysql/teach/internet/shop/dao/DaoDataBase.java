@@ -12,12 +12,20 @@ public class DaoDataBase implements IDaoDataBase {
     Connection connection;
     Statement statement;
 
+    public DaoDataBase() {
+        try {
+            createConnectionBase();
+        } catch (SQLException e) {
+            System.out.println("Database is not connection: " + e);
+        }
+    }
 
-    public Statement getStatement(){
+
+    public Statement getStatement() {
         return statement;
     }
 
-    public void createConnectionBase()throws SQLException{
+    public void createConnectionBase() throws SQLException {
         connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1/internet_shop", "root", "root");
         statement = connection.createStatement();
     }

@@ -10,6 +10,7 @@ import java.util.regex.Pattern;
  *
  */
 public class Sex implements ISex {
+    private SexEnum sex;
     private String name;
 
     /**
@@ -25,8 +26,10 @@ public class Sex implements ISex {
     public Sex(int index) throws InvalidSexNameException {
         if ((checkIndex(index)) == 1) {
             name = "male";
+            sex = SexEnum.MALE;
         } else {
             name = "female";
+            sex = SexEnum.FEMALE;
         }
     }
 

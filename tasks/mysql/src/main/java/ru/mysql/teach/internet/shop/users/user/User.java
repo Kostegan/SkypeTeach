@@ -15,19 +15,19 @@ public class User implements IUser {
     public User(){
     }
 
-    public User(String name, String password,String email,String sex) throws InvalidSexNameException{
+    public User(String name, String password,String email,ISex sex) throws InvalidSexNameException{
         this.name = name;
         this.password = password;
         this.email = email;
-        this.sex = new Sex(sex);
+        this.sex = sex;
     }
 
-    public User(String name, String password,String email,int index) throws InvalidSexNameException{
-        this.name = name;
-        this.password = password;
-        this.email = email;
-        this.sex = new Sex(index);
-    }
+//    public User(String name, String password,String email,int index) throws InvalidSexNameException{
+//        this.name = name;
+//        this.password = password;
+//        this.email = email;
+//        this.sex = new Sex(index);
+//    }
 
     @Override
     public void setName(String name) {
