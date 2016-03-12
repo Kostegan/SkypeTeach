@@ -3,5 +3,9 @@ package ru.mysql.teach.internet.shop.entity;
 /**
  *
  */
-public class IIdEntity {
+public interface IIdEntity {
+
+    public Long getId();
+
+    public void setId(Long id);
 }

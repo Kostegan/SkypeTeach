@@ -1,1 +1,3 @@
 ClassName=TableName [nameField=TableColName,nameField=TableColName]
+
+ClassName=TableName [nameField=TableColName,nameField=TableColName]

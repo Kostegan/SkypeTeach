@@ -10,28 +10,53 @@ import java.sql.Statement;
 import java.util.List;
 
 /**
- * Creates new users,permits add/delete from dataBase.
+ * Has methods for a work with users in database.
  */
 public interface IDaoUser {
-    public IDaoDataBase getConnection();
-    public Statement getStatement();
+    final static String TABLE_NAME = "users";
 
+    /**
+     * Adds new user to a base.
+     * @param user which will be add.
+     */
     public void addUser(IUser user) throws SQLException;
 
-    /**
-     * Creates a new user with filled fields from a database.
-     * @param index selected user from a database
-     * @return new user with filled fields from a database
-     * @throws InvalidSexNameException
-     * @throws UserNotExistException if the user with this index does not exist.
-     */
-    public IUser getUser(int index)throws SQLException,InvalidSexNameException,UserNotExistException;
+    public IUser getUserByNameAndEmail(String name,String email) throws SQLException;
 
     /**
-     * Gets the list with names for men.
-     * @return list with names
+     * @param id the user in base.
+     * @return user by specified index.
+     * @throws IllegalArgumentException - if the database has not a user with this index.
      */
-    public List<String> getSortNamesByMen(Statement statement) throws SQLException;
+    public IUser getUserById(int id) throws IllegalArgumentException, Exception;
 
-    public String countPeopleForEachSex(Statement statement)throws SQLException;
+    /**
+     * Allows to change specified user in a database.
+     */
+    public void updateUser(IUser user);
+
+
+//    public IDaoDataBase getConnection();
+//    public Statement getStatement();
+//
+////    public void addUser(IUser user) throws SQLException;
+//
+//    /**
+//     * Creates a new user with filled fields from a database.
+//     * @param index selected user from a database
+//     * @return new user with filled fields from a database
+//     * @throws InvalidSexNameException
+//     * @throws UserNotExistException if the user with this index does not exist.
+//     */
+////    public IUser getUserById(int index)throws SQLException,InvalidSexNameException,UserNotExistException;
+//
+//    /**
+//     * Gets the list with names for men.
+//     * @return list with names
+//     */
+//    public List<String> getSortNamesByMen() throws SQLException;
+//
+//    public String countPeopleForEachSex()throws SQLException;
+//
+//    public void execute(String string);
 }

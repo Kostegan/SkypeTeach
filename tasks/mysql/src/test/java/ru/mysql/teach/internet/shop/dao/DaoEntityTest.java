@@ -14,7 +14,6 @@ public class DaoEntityTest {
 
     @Test
     public void getEntityById(){
-        IDaoEntity daoEntity = createIDaoEntity();
 
     }
 }
