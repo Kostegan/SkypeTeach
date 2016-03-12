@@ -1,7 +1,7 @@
 package ru.mysql.teach.internet.shop.users.user;
 
 import org.junit.Test;
-import ru.mysql.teach.internet.shop.users.user.sex.SexEnum1;
+import ru.mysql.teach.internet.shop.users.user.sex.SexEnum;
 import static org.junit.Assert.*;
 /**
  *
@@ -13,8 +13,8 @@ public class UserTest {
      * @param sexIndex uses for create sex.
      * @return
      */
-    private SexEnum1 createSexEnum(int sexIndex){
-        return SexEnum1.valueOf(sexIndex);
+    private SexEnum createSexEnum(int sexIndex){
+        return SexEnum.valueOf(sexIndex);
     }
 
 
@@ -67,7 +67,7 @@ public class UserTest {
     public void setOtherSex(){
         IUser user = new User("Viktor","pperklf","refee@mail.ru",createSexEnum(2));
         assertEquals("User sex is: ","FEMALE",user.getSex().getSexName());
-        SexEnum1 sex = SexEnum1.MALE;
+        SexEnum sex = SexEnum.MALE;
         user.setSex(sex);
         assertEquals("User sex is: ","MALE",user.getSex().getSexName());
     }

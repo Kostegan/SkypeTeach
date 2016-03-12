@@ -3,7 +3,7 @@ package ru.mysql.teach.internet.shop.products.dao;
 import ru.mysql.teach.internet.shop.dao.AbstractDaoEntity;
 import ru.mysql.teach.internet.shop.dao.IDaoDataBase;
 import ru.mysql.teach.internet.shop.products.product.IProduct;
-import ru.mysql.teach.internet.shop.products.product.Product1;
+import ru.mysql.teach.internet.shop.products.product.Product;
 import ru.mysql.teach.internet.shop.products.product.type.TypeEnum;
 
 import java.sql.SQLException;
@@ -37,7 +37,7 @@ public class DaoProduct extends AbstractDaoEntity implements IDaoProduct {
         String pName =(String) temp.get(0);
         int pType =(Integer) temp.get(1);
         TypeEnum productType = TypeEnum.valueOf(pType);
-        IProduct product = new Product1(pName,productType);  // спросить
+        IProduct product = new Product(pName,productType);  // спросить
         return product;
     }
 

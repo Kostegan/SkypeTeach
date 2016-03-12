@@ -1,7 +1,7 @@
 package ru.mysql.teach.internet.shop.users.user;
 
 import ru.mysql.teach.internet.shop.entity.IIdEntity;
-import ru.mysql.teach.internet.shop.users.user.sex.SexEnum1;
+import ru.mysql.teach.internet.shop.users.user.sex.SexEnum;
 
 /**
  * Class has methods and fields for creating and operating with new user.
@@ -44,10 +44,10 @@ public interface IUser extends IIdEntity {
      * Accepts a specified sex from a argument.
      * @param sex will be set.
      */
-    public void setSex(SexEnum1 sex);
+    public void setSex(SexEnum sex);
 
     /**
      * @return sex
      */
-    public SexEnum1 getSex();
+    public SexEnum getSex();
 }

@@ -4,7 +4,7 @@ import ru.mysql.teach.internet.shop.dao.AbstractDaoEntity;
 import ru.mysql.teach.internet.shop.dao.IDaoDataBase;
 import ru.mysql.teach.internet.shop.users.user.IUser;
 import ru.mysql.teach.internet.shop.users.user.User;
-import ru.mysql.teach.internet.shop.users.user.sex.SexEnum1;
+import ru.mysql.teach.internet.shop.users.user.sex.SexEnum;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -45,7 +45,7 @@ public class DaoUser extends AbstractDaoEntity implements IDaoUser {
             user.setName(name);
             user.setPassword(rs.getString("password"));
             user.setEmail(rs.getString("email"));
-            user.setSex(SexEnum1.valueOf(rs.getInt("sex")));
+            user.setSex(SexEnum.valueOf(rs.getInt("sex")));
         }
         return user;
     }

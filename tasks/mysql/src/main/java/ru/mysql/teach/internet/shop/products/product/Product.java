@@ -5,14 +5,14 @@ import ru.mysql.teach.internet.shop.products.product.type.TypeEnum;
 /**
  *
  */
-public class Product1 implements IProduct {
+public class Product implements IProduct {
     private String name;
     private TypeEnum type;
 
-    public Product1() {
+    public Product() {
     }
 
-    public Product1(String name, TypeEnum type) {
+    public Product(String name, TypeEnum type) {
         this.name = name;
         this.type = type;
     }

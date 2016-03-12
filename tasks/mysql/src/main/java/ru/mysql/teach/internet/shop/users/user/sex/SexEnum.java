@@ -3,13 +3,13 @@ package ru.mysql.teach.internet.shop.users.user.sex;
 /**
  * Creates sex for a user.
  */
-public enum SexEnum1 {
+public enum SexEnum {
     MALE(1),
     FEMALE(2);
     private final int value;
 
 
-    SexEnum1(int value) {
+    SexEnum(int value) {
         this.value = value;
     }
 
@@ -21,8 +21,8 @@ public enum SexEnum1 {
         return toString();
     }
 
-    public static SexEnum1 valueOf(int value) {
-        for (SexEnum1 sex : SexEnum1.values()) {
+    public static SexEnum valueOf(int value) {
+        for (SexEnum sex : SexEnum.values()) {
             if (sex.getValue() == value) {
                 return sex;
             }

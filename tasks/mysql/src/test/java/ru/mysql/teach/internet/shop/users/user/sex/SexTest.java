@@ -6,7 +6,7 @@ import org.junit.Test;
  *
  */
 public class SexTest {
-    private SexEnum1 sex;
+    private SexEnum sex;
 
     /**
      * Creates and writes a new sex to field sex. The sex is gets from a specified sexIndex.
@@ -14,7 +14,7 @@ public class SexTest {
      * @param sexIndex witch will be set.
      */
     private void createSex(int sexIndex){
-        sex = SexEnum1.valueOf(sexIndex);
+        sex = SexEnum.valueOf(sexIndex);
     }
 
     @Test
@@ -38,18 +38,18 @@ public class SexTest {
     @Test
     public void checkMaleValueOf(){
         int index = 1;
-        assertEquals("This index belongs to: ","MALE", SexEnum1.valueOf(index).getSexName());
+        assertEquals("This index belongs to: ","MALE", SexEnum.valueOf(index).getSexName());
     }
 
     @Test
     public void checkFemaleValueOf(){
         int index = 2;
-        assertEquals("This index belongs to: ", SexEnum1.FEMALE, SexEnum1.valueOf(index));
+        assertEquals("This index belongs to: ", SexEnum.FEMALE, SexEnum.valueOf(index));
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void checkIncompatibleValueOf(){
         int index = 4;
-        assertEquals("This index belongs to: ","FEMALE", SexEnum1.valueOf(index).getSexName());
+        assertEquals("This index belongs to: ","FEMALE", SexEnum.valueOf(index).getSexName());
     }
 }
