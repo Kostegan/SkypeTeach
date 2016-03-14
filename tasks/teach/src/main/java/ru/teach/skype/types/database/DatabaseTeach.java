@@ -13,13 +13,17 @@ public class DatabaseTeach {
         // JavaApp - Hibernate - JDBC - DB
         // ORM - Object-Relational mapping
 
-        Connection connection = DriverManager.getConnection("jdbc:mysql//127.0.0.1/test_db", "kostya", "pass123");
+//        String serverName = "127.0.0.1";
+//        String myDataBase = "teach";
+//        String pass = "root";
+//        String user = "root";
 
+        Connection connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1/teach","root", "root");
         Statement statement = connection.createStatement();
-        statement.execute("CREATE TABLE users (id int primary key, name varchar(50) unique, )");
+//        statement.execute("CREATE TABLE users (id int primary key, name varchar(50) unique, )");
 
         List<User> users = new ArrayList<>();
-        ResultSet rs = statement.executeQuery("SELECT id, name, age FROM users WHERE age>50");
+        ResultSet rs = statement.executeQuery("SELECT id, name, age FROM users WHERE age>30;");
         while (rs.next()) {
             int id = rs.getInt("id");
             String name = rs.getString("name");
@@ -27,11 +31,15 @@ public class DatabaseTeach {
 
             User user = new User();
             user.setId(id);
-
+            user.setName(name);
+            user.setAge(age);
             users.add(user);
         }
 
-        System.out.println(users);
+        for(User user: users){
+            System.out.println(user.printUser());
+        }
+
     }
 
     private static class User {
@@ -61,6 +69,10 @@ public class DatabaseTeach {
 
         public void setAge(int age) {
             this.age = age;
+        }
+
+        public String printUser(){
+            return this.id +" "+name+" "+age;
         }
     }
 }
