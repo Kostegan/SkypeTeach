@@ -12,5 +12,5 @@ public interface IRule {
      * @param field which will be check.
      * @return return true if the winning combination is found
      */
-    boolean checkCombination(IField field, Sign sing);
+    boolean checkCombination(IField field,Sign sign);
 }

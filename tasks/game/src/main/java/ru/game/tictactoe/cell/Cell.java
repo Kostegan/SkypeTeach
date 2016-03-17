@@ -35,13 +35,13 @@ public class Cell implements ICell {
         }
     }
 
-    public int printCell() {
+    public String printCell() {
         if (sign == null) {
-            return this.getCellNumber();
+            return this.getCellNumber()+"";
         } else if (sign == Sign.CROOS) {
-            return 'X';
+            return "X";
         }
-        return '0';
+        return "0";
     }
 
     @Override

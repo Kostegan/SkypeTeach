@@ -7,6 +7,7 @@ import ru.game.tictactoe.field.Field;
 import ru.game.tictactoe.field.IField;
 import ru.game.tictactoe.player.IPlayer;
 import ru.game.tictactoe.player.Player;
+import ru.game.tictactoe.sign.Sign;
 
 import java.io.IOException;
 import java.util.Scanner;
@@ -17,7 +18,7 @@ import java.util.Scanner;
 public class Engine implements IEngine {
     private IPlayer playerOne;
     private IPlayer playerTwo;
-    private IField field;
+    private IField field = new Field();
     private IRule rule = new Rule();
 
 
@@ -26,11 +27,14 @@ public class Engine implements IEngine {
         prepareToGame();
         System.out.println("Name the first player is: " + playerOne.getPlayerName() + ", name the second player is: " + playerTwo.getPlayerName());
         printField();
-        IPlayer currentPlayer = playerOne;
-        while(rule.checkCombination(field,currentPlayer.getPlayerSign())){
-            System.out.println("Select cell: ");
-
+        IPlayer currentPlayer = playerTwo;
+        while (rule.checkCombination((field),currentPlayer.getPlayerSign())) {
+            currentPlayer=exchangePlayer(currentPlayer);
+            System.out.println("Select cell number: ");
+            doStep().setSign(currentPlayer.getPlayerSign());
+            printField();
         }
+        System.out.println(currentPlayer.getPlayerName()+" is winner!!!");
     }
 
     /**
@@ -39,34 +43,47 @@ public class Engine implements IEngine {
     private void prepareToGame() {
         Scanner sc = new Scanner(System.in);
         System.out.println("Select a player name ONE:");
-        String  name1 = sc.next();
+        String name1 = sc.next();
         setPlayerOneName(name1);
         System.out.println("Select a player name TWO:");
-        String  name2 = sc.next();
+        String name2 = sc.next();
         setPlayerTwoName(name2);
     }
 
-    private void setPlayerOneName(String name){
+    private void setPlayerOneName(String name) {
         playerOne = new Player();
         playerOne.setPlayerName(name);
+        playerOne.setPlayerSign(Sign.CROOS);
     }
 
-    private void setPlayerTwoName(String name){
+    private void setPlayerTwoName(String name) {
         playerTwo = new Player();
         playerTwo.setPlayerName(name);
+        playerTwo.setPlayerSign(Sign.TOE);
     }
 
-    private void printField(){
-        field = new Field();
+    private void printField() {
         field.printField();
     }
 
-    private void doStep(int cellNumber){
-        ICell cell = field.findCellByNumber(cellNumber);
+    private IPlayer exchangePlayer(IPlayer player) {
+        if (player == playerOne) {
+            return playerTwo;
+        } else {
+            return playerOne;
+        }
+    }
+
+    private ICell doStep() {
+        Scanner sc = new Scanner(System.in);
+        int number = sc.nextInt();
+        ICell cell = field.findCellByNumber(number);
+        return cell;
+//        ICell cell = ;
 //        cells. todo
     }
 
-    private boolean endGame(){
+    private boolean endGame() {
         return true;
     }
 

@@ -24,15 +24,30 @@ public class Rule implements IRule {
         Sign cell8 = cells[2][1].getSign();
         Sign cell9 = cells[2][2].getSign();
         if(cell1 ==sign && cell2 == sign && cell3 == sign){
-            return true;
+            return false;
         }
         if(cell4 ==sign && cell5 == sign && cell6 == sign){
-            return true;
+            return false;
         }
         if(cell7 ==sign && cell8 == sign && cell9 == sign){
-            return true;
+            return false;
         }
-        return false;
+        if(cell1 ==sign && cell4 == sign && cell7 == sign){
+            return false;
+        }
+        if(cell2 ==sign && cell5 == sign && cell8 == sign){
+            return false;
+        }
+        if(cell3 ==sign && cell6 == sign && cell9 == sign){
+            return false;
+        }
+        if(cell1 ==sign && cell5 == sign && cell9 == sign){
+            return false;
+        }
+        if(cell3 ==sign && cell5 == sign && cell7 == sign){
+            return false;
+        }
+        return true;
     }
 
 

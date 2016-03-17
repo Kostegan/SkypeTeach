@@ -22,7 +22,7 @@ public interface ICell {
      */
     Sign getSign();
 
-    public int printCell();
+    public String printCell();
 
 
     public  int getCellNumber();

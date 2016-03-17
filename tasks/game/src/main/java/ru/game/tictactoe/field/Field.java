@@ -43,9 +43,15 @@ public class Field implements IField {
 
     @Override
     public ICell findCellByNumber(int cellNumber) {
-
-        return null;
+        for(int i = 0; i<field.length;i++){
+            Cell[] temp = field[i];
+            for(int j = 0;j<temp.length;j++){
+                if((temp[j].getCellNumber())==cellNumber){
+                    return temp[j];
+                };
+            }
+        }
+        throw new IllegalArgumentException("Cell number: "+cellNumber+" is incorrect, correct cell number 1-9");
     }
-
 }
 
