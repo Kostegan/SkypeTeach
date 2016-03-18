@@ -3,7 +3,7 @@ package ru.mysql.teach.internet.shop.dao.schema;
 /**
  *
  */
-public class EntitySchemaField {
+public class EntitySchemaField implements IEntitySchemaField {
     private String columnName;
     private String javaName;
     private boolean primaryKey;

@@ -136,10 +136,10 @@ public class DaoDataBase implements IDaoDataBase {
 //    @Override
 //    public String[] generateQueryToSelect(String[] data) {
 //        for(String temp:data){
-////        String userName = user.getName();
-////        String userPassword = user.getPassword();
-////        String userEmail = user.getEmail();
-////        int indexSex = (user.getSex().getValue());
+////        String userName = UserSchema.getName();
+////        String userPassword = UserSchema.getPassword();
+////        String userEmail = UserSchema.getEmail();
+////        int indexSex = (UserSchema.getSex().getValue());
 ////        statement.execute("INSERT INTO users(name,password,email,sex) VALUE('" + userName + "','" + userPassword + "','" + userEmail + "','" + indexSex + "');");
 //        }
 //        return new String[0];

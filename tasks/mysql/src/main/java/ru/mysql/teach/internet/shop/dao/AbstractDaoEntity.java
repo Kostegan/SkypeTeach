@@ -1,7 +1,12 @@
 package ru.mysql.teach.internet.shop.dao;
 
+import ru.mysql.teach.internet.shop.dao.schema.IEntitySchema;
+import ru.mysql.teach.internet.shop.dao.schema.ISchemaParser;
+import ru.mysql.teach.internet.shop.dao.schema.ReaderSchema;
+import ru.mysql.teach.internet.shop.dao.schema.SchemaParser;
 import ru.mysql.teach.internet.shop.users.user.IUser;
 
+import java.sql.ResultSet;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -14,18 +19,47 @@ public abstract class AbstractDaoEntity {
     protected AbstractDaoEntity(IDaoDataBase daoDataBase) {
         this.daoDataBase = daoDataBase;
     }
-
     protected IDaoDataBase getDaoDataBase() {
         return daoDataBase;
     }
 
 
     public Object getEntityById(Class cls, int id) throws Exception {
-        if (cls == IUser.class) {
-            return getUser(cls, id);
-        }
+        String className = cls.getName();
+
+        ISchemaParser schemaParser = new SchemaParser();
+        //--//
+        ReaderSchema readerSchema = new ReaderSchema();
+        String schema = "C:\\GitHub\\SkypeTeach\\tasks\\mysql\\src\\main\\resources\\SchemaForUser";
+        IEntitySchema entitySchema = schemaParser.parseSchema(readerSchema.getSchema(schema));
+        //--//
+
+        ResultSet rs = daoDataBase.executeToSelect(createSql(entitySchema));
+        createObject(rs);
         return null;
     }
+
+    private String createSql(IEntitySchema entitySchema){
+        StringBuilder builder = new StringBuilder("SELECT * FROM ");
+        builder.append(entitySchema.getTableName());
+        builder.append("WHERE id = ");
+        builder.append(entitySchema.getPrimaryKeyField());
+        builder.append(";");
+        return builder+"";
+    }
+
+    private Object createObject(ResultSet rs){
+
+        return null;
+    }
+
+
+//    public Object getEntityById(Class cls, int id) throws Exception {
+//        if (cls == IUser.class) {
+//            return getUser(cls, id);
+//        }
+//        return null;
+//    }
 
     private IUser getUser(Class cls, int id) throws Exception {
         String schema = "C:\\GitHub\\SkypeTeach\\tasks\\mysql\\src\\main\\resources\\SchemaForUser";
@@ -79,7 +113,7 @@ public abstract class AbstractDaoEntity {
     }
 
     public static void main(String[] args) {
-        String schema = "ru.mysql.teach.internet.shop.users.user.User=users [id=id,name=name,age=age]";
+        String schema = "ru.mysql.teach.internet.shop.users.UserSchema.User=users [id=id,name=name,age=age]";
         parseSchema(schema);
     }
 

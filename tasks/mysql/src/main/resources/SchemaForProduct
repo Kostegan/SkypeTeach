@@ -1,2 +1,1 @@
-ru.mysql.teach.internet.shop.users.UserSchema.User=users [id=id,name=name,age=age]
 ru.mysql.teach.internet.shop.product.Product=product [id=id,name=name,shop=shop,department=department]

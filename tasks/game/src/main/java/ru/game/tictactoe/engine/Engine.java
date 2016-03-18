@@ -20,6 +20,7 @@ public class Engine implements IEngine {
     private IPlayer playerTwo;
     private IField field = new Field();
     private IRule rule = new Rule();
+    private int moveCounter;
 
 
     @Override
@@ -28,13 +29,18 @@ public class Engine implements IEngine {
         System.out.println("Name the first player is: " + playerOne.getPlayerName() + ", name the second player is: " + playerTwo.getPlayerName());
         printField();
         IPlayer currentPlayer = playerTwo;
-        while (rule.checkCombination((field),currentPlayer.getPlayerSign())) {
-            currentPlayer=exchangePlayer(currentPlayer);
+        while (rule.checkCombination((field), currentPlayer.getPlayerSign()) && moveCounter != 9) {
+            currentPlayer = exchangePlayer(currentPlayer);
             System.out.println("Select cell number: ");
             doStep().setSign(currentPlayer.getPlayerSign());
             printField();
+            moveCounter++;
         }
-        System.out.println(currentPlayer.getPlayerName()+" is winner!!!");
+        if (moveCounter == 9) {
+            System.out.println("Draw!!!");
+        } else {
+            System.out.println(currentPlayer.getPlayerName() + " is winner!!!");
+        }
     }
 
     /**
@@ -66,6 +72,7 @@ public class Engine implements IEngine {
         field.printField();
     }
 
+
     private IPlayer exchangePlayer(IPlayer player) {
         if (player == playerOne) {
             return playerTwo;
@@ -77,26 +84,12 @@ public class Engine implements IEngine {
     private ICell doStep() {
         Scanner sc = new Scanner(System.in);
         int number = sc.nextInt();
-        ICell cell = field.findCellByNumber(number);
-        return cell;
-//        ICell cell = ;
-//        cells. todo
+        return field.findCellByNumber(number);
     }
 
     private boolean endGame() {
         return true;
     }
-
-//    private void createPlayers(int number) {
-//        if(number>=1){
-//            playerOne = new Player();
-//        }
-//        if(number==2){
-//            playerTwo = new Player();
-//        } else {
-//            throw new IllegalArgumentException("Count player might not be more 2, you specified: "+number);
-//        }
-//    }
 }
 
 class main {

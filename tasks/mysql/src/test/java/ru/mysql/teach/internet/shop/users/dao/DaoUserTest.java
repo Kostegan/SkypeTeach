@@ -24,4 +24,12 @@ public class DaoUserTest {
         System.out.println(daoUser.getUserByNameAndEmail("Filip22","filip@filip.com").getName());
 
     }
+
+    @Test
+    public void getUserById()throws Exception{
+        IDaoDataBase daoDataBase = new DaoDataBase();
+        IDaoUser daoUser = new DaoUser(daoDataBase);
+
+        daoUser.getUserById(IUser.class,1);
+    }
 }

@@ -51,20 +51,25 @@ public class DaoUser extends AbstractDaoEntity implements IDaoUser {
     }
 
     /**
-     * Creates a query to database and returns found user.
+     * Creates a query to database and returns found UserSchema.
      *
-     * @param id the user in base.
+     * @param id the UserSchema in base.
      * @return
      * @throws IllegalArgumentException
      */
     @Override
     public IUser getUserById(int id) throws IllegalArgumentException, Exception {
         IUser user = (IUser) super.getEntityById(IUser.class, id);
-//        IUser user = super.getEntityById(IUser.class,id);
+//        IUser UserSchema = super.getEntityById(IUser.class,id);
 //        Object[] temp = {TABLE_NAME,index};
-//        IUser user = convertStringToUser(daoDataBase.generateQueryToSelect(temp));
-//        return user;
+//        IUser UserSchema = convertStringToUser(daoDataBase.generateQueryToSelect(temp));
+//        return UserSchema;
         return null;
+    }
+
+    @Override
+    public IUser getUserById(Class cls, int id)throws Exception {
+        return (IUser) getEntityById(cls,id);
     }
 
     @Override
@@ -73,10 +78,10 @@ public class DaoUser extends AbstractDaoEntity implements IDaoUser {
     }
 
     /**
-     * Separates specified user to String[].
+     * Separates specified UserSchema to String[].
      *
      * @param user which will be separate.
-     * @return user as String[]
+     * @return UserSchema as String[]
      */
     private String[] parseUserToString(IUser user) {
         return null;
@@ -121,25 +126,25 @@ public class DaoUser extends AbstractDaoEntity implements IDaoUser {
 //    }
 //
 //    @Override
-//    public void addUser(IUser user) throws SQLException {
-//        String userName = user.getName();
-//        String userPassword = user.getPassword();
-//        String userEmail = user.getEmail();
-//        int indexSex = (user.getSex().getValue());
+//    public void addUser(IUser UserSchema) throws SQLException {
+//        String userName = UserSchema.getName();
+//        String userPassword = UserSchema.getPassword();
+//        String userEmail = UserSchema.getEmail();
+//        int indexSex = (UserSchema.getSex().getValue());
 //        statement.execute("INSERT INTO users(name,password,email,sex) VALUE('" + userName + "','" + userPassword + "','" + userEmail + "','" + indexSex + "');");
 //    }
 //
 //    @Override
 //    public IUser getUserById(int index) throws SQLException, InvalidSexNameException, UserNotExistException {
-//        IUser user;
+//        IUser UserSchema;
 //        ResultSet rs = statement.executeQuery("SELECT * FROM users WHERE id = '" + index + "'");
 //        while (rs.next()) {
 //            String name = rs.getString("name");
 //            String password = rs.getString("password");
 //            String email = rs.getString("email");
 //            SexEnum sexEnum = SexEnum.valueOf(rs.getInt("sex"));
-//            user = new User(name, password, email, sexEnum);
-//            return user;
+//            UserSchema = new User(name, password, email, sexEnum);
+//            return UserSchema;
 //        }
 //        throw new UserNotExistException("User with - " + index + " not exists.");
 //    }

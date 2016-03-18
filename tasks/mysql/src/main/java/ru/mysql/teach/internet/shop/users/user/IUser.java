@@ -4,7 +4,7 @@ import ru.mysql.teach.internet.shop.entity.IIdEntity;
 import ru.mysql.teach.internet.shop.users.user.sex.SexEnum;
 
 /**
- * Class has methods and fields for creating and operating with new user.
+ * Class has methods and fields for creating and operating with new UserSchema.
  */
 public interface IUser extends IIdEntity {
     /**

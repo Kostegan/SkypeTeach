@@ -1,7 +1,7 @@
 package ru.mysql.teach.internet.shop.users.user.sex;
 
 /**
- * Creates sex for a user.
+ * Creates sex for a UserSchema.
  */
 public enum SexEnum {
     MALE(1),

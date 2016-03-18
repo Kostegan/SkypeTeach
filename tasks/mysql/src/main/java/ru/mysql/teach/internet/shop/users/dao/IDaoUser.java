@@ -16,7 +16,14 @@ public interface IDaoUser {
     final static String TABLE_NAME = "users";
 
     /**
-     * Adds new user to a base.
+     * Returns an user by id.
+     * @param id which need search
+     * @return user by id
+     */
+    IUser getUserById(Class cls,int id) throws Exception;
+
+    /**
+     * Adds new UserSchema to a base.
      * @param user which will be add.
      */
     public void addUser(IUser user) throws SQLException;
@@ -24,14 +31,14 @@ public interface IDaoUser {
     public IUser getUserByNameAndEmail(String name,String email) throws SQLException;
 
     /**
-     * @param id the user in base.
-     * @return user by specified index.
-     * @throws IllegalArgumentException - if the database has not a user with this index.
+     * @param id the UserSchema in base.
+     * @return UserSchema by specified index.
+     * @throws IllegalArgumentException - if the database has not a UserSchema with this index.
      */
     public IUser getUserById(int id) throws IllegalArgumentException, Exception;
 
     /**
-     * Allows to change specified user in a database.
+     * Allows to change specified UserSchema in a database.
      */
     public void updateUser(IUser user);
 
@@ -39,14 +46,14 @@ public interface IDaoUser {
 //    public IDaoDataBase getConnection();
 //    public Statement getStatement();
 //
-////    public void addUser(IUser user) throws SQLException;
+////    public void addUser(IUser UserSchema) throws SQLException;
 //
 //    /**
-//     * Creates a new user with filled fields from a database.
-//     * @param index selected user from a database
-//     * @return new user with filled fields from a database
+//     * Creates a new UserSchema with filled fields from a database.
+//     * @param index selected UserSchema from a database
+//     * @return new UserSchema with filled fields from a database
 //     * @throws InvalidSexNameException
-//     * @throws UserNotExistException if the user with this index does not exist.
+//     * @throws UserNotExistException if the UserSchema with this index does not exist.
 //     */
 ////    public IUser getUserById(int index)throws SQLException,InvalidSexNameException,UserNotExistException;
 //
