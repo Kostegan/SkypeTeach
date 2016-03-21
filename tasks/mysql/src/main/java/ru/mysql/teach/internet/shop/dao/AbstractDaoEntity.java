@@ -13,19 +13,27 @@ import java.util.regex.Pattern;
 /**
  *
  */
-public abstract class AbstractDaoEntity {
+public abstract class AbstractDaoEntity<T extends IDaoEntity> {
     private IDaoDataBase daoDataBase;
+    private IEntitySchema entitySchema;
+    private Class<T> entityClass;
 
-    protected AbstractDaoEntity(IDaoDataBase daoDataBase) {
+    public AbstractDaoEntity(IDaoDataBase daoDataBase) {
         this.daoDataBase = daoDataBase;
+    }
+
+    protected AbstractDaoEntity(IDaoDataBase daoDataBase, IEntitySchema entitySchema, Class<T> entityClass) {
+        this.daoDataBase = daoDataBase;
+        this.entitySchema = entitySchema;
+        this.entityClass = entityClass;
     }
     protected IDaoDataBase getDaoDataBase() {
         return daoDataBase;
     }
 
 
-    public Object getEntityById(Class cls, int id) throws Exception {
-        String className = cls.getName();
+    public T getEntityById(Class cls, int id) throws Exception {
+//        String className = cls.getName();
 
         ISchemaParser schemaParser = new SchemaParser();
         //--//

@@ -22,51 +22,64 @@ public class Field implements IField {
     }
 
     private void fillField() {
-        for (int i = 0; i < field.length; i++) {
-            Cell[] temp = field[i];
-            for (int j = 0; j < temp.length; j++) {
-                Cell cell = new Cell();
-                temp[j] = cell;
+        runOnField(new RunOnFieldCallback() {
+            @Override
+            public boolean doCellAction(Cell cell, Cell[] row, int rowIndex, int colIndex) {
+                cell = new Cell();
+                row[colIndex] = cell;
+                return false;
             }
-        }
+        });
     }
 
+    @Override
     public void printField() {
-        for (int i = 0; i < field.length; i++) {
-            Cell[] temp = field[i];
-            for (int j = 0; j < temp.length; j++) {
-                System.out.print(temp[j].printCell() + " ");
+        runOnField(new RunOnFieldCallback() {
+            @Override
+            public boolean doCellAction(Cell cell, Cell[] row, int rowIndex, int colIndex) {
+                System.out.print(cell.printCell() + " ");
+                if(colIndex==row.length-1){
+                    System.out.println();
+                }
+                return false;
             }
-            System.out.println();
-        }
+        });
     }
 
     @Override
     public ICell findCellByNumber(int cellNumber) {
+
+        Cell cell = runOnField(new RunOnFieldCallback() {
+            @Override
+            public boolean doCellAction(Cell cell, Cell[] row, int rowIndex, int colIndex) {
+               return cell.getCellNumber() == cellNumber;
+            }
+        });
+        if(cell==null){
+            throw new IllegalArgumentException("Cell number: " + cellNumber + " is incorrect, correct cell number 1-9");
+        }
+        return cell;
+    }
+
+    private Cell runOnField(RunOnFieldCallback callback) {
         for (int i = 0; i < field.length; i++) {
-            Cell[] temp = field[i];
-            for (int j = 0; j < temp.length; j++) {
-                if ((temp[j].getCellNumber()) == cellNumber) {
-                    return temp[j];
+            Cell[] row = field[i];
+            for (int j = 0; j < row.length; j++) {
+                Cell cell = row[j];
+                boolean find = callback.doCellAction(cell, row, i, j);
+                if(find){
+                    return cell;
                 }
             }
         }
-        throw new IllegalArgumentException("Cell number: " + cellNumber + " is incorrect, correct cell number 1-9");
+        return null;
     }
 
-
-    public Cell[] getCell() {
-        Cell[] allTemp = new Cell[9];
-        for (int i = 0; i < field.length; i++) {
-            Cell[] temp = field[i];
-            for (int j = 0; j < temp.length; j++) {
-                int number = temp[j].getCellNumber();
-                allTemp[number] = temp[j];
-
-            }
-        }
-        return allTemp;
+    interface RunOnFieldCallback {
+        boolean doCellAction(Cell cell, Cell[] row, int rowIndex, int colIndex);
     }
 }
+
+
 
 

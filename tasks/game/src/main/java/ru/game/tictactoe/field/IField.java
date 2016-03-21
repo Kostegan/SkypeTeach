@@ -20,4 +20,7 @@ public interface IField {
      * Searches a cell by specifies number.
      */
     ICell findCellByNumber(int cellNumber);
+
+
+    boolean isFieldFilled();
 }

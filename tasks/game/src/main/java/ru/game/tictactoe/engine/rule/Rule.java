@@ -10,6 +10,8 @@ import ru.game.tictactoe.sign.Sign;
 public class Rule implements IRule {
     private Sign sign;
 
+
+
     @Override
     public boolean checkCombination(IField field, Sign sign) {
         this.sign = sign;

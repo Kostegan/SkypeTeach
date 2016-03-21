@@ -8,6 +8,7 @@ import ru.game.tictactoe.field.IField;
 import ru.game.tictactoe.player.IPlayer;
 import ru.game.tictactoe.player.Player;
 import ru.game.tictactoe.sign.Sign;
+import ru.game.ui.UI;
 
 import java.io.IOException;
 import java.util.Scanner;
@@ -22,6 +23,13 @@ public class Engine implements IEngine {
     private IRule rule = new Rule();
     private int moveCounter;
 
+    private UI ui;
+
+    private IGameState gameState = new GameState(field);
+
+    public Engine(UI ui) {
+        this.ui = ui;
+    }
 
     @Override
     public void startGame() throws IOException {
@@ -29,30 +37,40 @@ public class Engine implements IEngine {
         System.out.println("Name the first player is: " + playerOne.getPlayerName() + ", name the second player is: " + playerTwo.getPlayerName());
         printField();
         IPlayer currentPlayer = playerTwo;
-        while (rule.checkCombination((field), currentPlayer.getPlayerSign()) && moveCounter != 9) {
+        while (!gameState.isFinished()) {
             currentPlayer = exchangePlayer(currentPlayer);
             System.out.println("Select cell number: ");
             doStep().setSign(currentPlayer.getPlayerSign());
             printField();
             moveCounter++;
         }
-        if (moveCounter == 9) {
+        IPlayer winner = getWinner();
+        if (winner == null) {
             System.out.println("Draw!!!");
         } else {
-            System.out.println(currentPlayer.getPlayerName() + " is winner!!!");
+            System.out.println(winner.getPlayerName() + " is winner!!!");
         }
+    }
+
+    private IPlayer getWinner() {
+        Sign winner = gameState.getWinner();
+        return    playerOne.getPlayerSign() == winner
+                ? playerOne
+                : playerTwo.getPlayerSign() == winner
+                ? playerTwo
+                : null;
     }
 
     /**
      * Sets a number players, and creates a players name.
      */
     private void prepareToGame() {
-        Scanner sc = new Scanner(System.in);
+//        Scanner sc = new Scanner(System.in);
         System.out.println("Select a player name ONE:");
-        String name1 = sc.next();
+        String name1 = ui.enterUserName1();//sc.next();
         setPlayerOneName(name1);
         System.out.println("Select a player name TWO:");
-        String name2 = sc.next();
+        String name2 = ui.enterUserName2(); //sc.next();
         setPlayerTwoName(name2);
     }
 
@@ -94,7 +112,8 @@ public class Engine implements IEngine {
 
 class main {
     public static void main(String[] args) throws IOException {
-        IEngine engine = new Engine();
+        UI ui = null; // new ConsoleUI(); // new TestUI
+        IEngine engine = new Engine(ui);
         engine.startGame();
     }
 }
