@@ -20,6 +20,11 @@ public class Player implements IPlayer {
     }
 
     @Override
+    public IPlayer createPlayer(String name, Sign sign) {
+        return null;
+    }
+
+    @Override
     public void setPlayerName(String name) {
         this.name = name;
     }
@@ -38,9 +43,5 @@ public class Player implements IPlayer {
     public void setPlayerSign(Sign sign) {
         this.sign = sign;
     }
-
-    @Override
-    public ICell makeMove(ICell cell) {
-        return null;
-    }
+    
 }

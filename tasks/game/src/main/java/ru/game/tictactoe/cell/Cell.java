@@ -1,5 +1,6 @@
 package ru.game.tictactoe.cell;
 
+import ru.game.tictactoe.field.Field;
 import ru.game.tictactoe.sign.Sign;
 
 /**
@@ -38,7 +39,7 @@ public class Cell implements ICell {
     public String printCell() {
         if (sign == null) {
             return this.getCellNumber()+"";
-        } else if (sign == Sign.CROOS) {
+        } else if (sign == Sign.CROSS) {
             return "X";
         }
         return "0";

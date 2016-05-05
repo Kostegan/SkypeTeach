@@ -17,7 +17,7 @@ public class CellTest {
     }
 
     private Sign createCrossSign(){
-        return Sign.CROOS;
+        return Sign.CROSS;
     }
 
     @Test
@@ -29,15 +29,15 @@ public class CellTest {
     @Test
     public void checkNotEmptyCell(){
         ICell cell = createCell();
-        cell.setSign(Sign.CROOS);
+        cell.setSign(Sign.CROSS);
         assertFalse("Cell not empty:", cell.isEmpty());
     }
 
     @Test
     public void getSignNameCroos(){
         ICell cell = createCell();
-        cell.setSign(Sign.CROOS);
-        assertEquals("Sign name is:", "CROOS", cell.getSign().name());
+        cell.setSign(Sign.CROSS);
+        assertEquals("Sign name is:", "CROSS", cell.getSign().name());
     }
 
     @Test
@@ -53,6 +53,6 @@ public class CellTest {
         ICell cell = createCell();
         cell.setSign(Sign.TOE);
         assertEquals("Sign name is:", "TOE", cell.getSign().name());
-        cell.setSign(Sign.CROOS);
+        cell.setSign(Sign.CROSS);
     }
 }

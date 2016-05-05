@@ -22,21 +22,28 @@ public class Engine implements IEngine {
     private IField field = new Field();
     private IRule rule = new Rule();
     private int moveCounter;
+    IPlayer currentPlayer;
 
     private UI ui;
 
-    private IGameState gameState = new GameState(field);
+    private IGameState gameState = new GameState(field, currentPlayer);
+
+
+    public Engine() {
+    }
 
     public Engine(UI ui) {
         this.ui = ui;
     }
+
+
 
     @Override
     public void startGame() throws IOException {
         prepareToGame();
         System.out.println("Name the first player is: " + playerOne.getPlayerName() + ", name the second player is: " + playerTwo.getPlayerName());
         printField();
-        IPlayer currentPlayer = playerTwo;
+         currentPlayer= playerTwo;
         while (!gameState.isFinished()) {
             currentPlayer = exchangePlayer(currentPlayer);
             System.out.println("Select cell number: ");
@@ -76,14 +83,12 @@ public class Engine implements IEngine {
 
     private void setPlayerOneName(String name) {
         playerOne = new Player();
-        playerOne.setPlayerName(name);
-        playerOne.setPlayerSign(Sign.CROOS);
+        playerOne.createPlayer(name, Sign.CROSS);
     }
 
     private void setPlayerTwoName(String name) {
         playerTwo = new Player();
-        playerTwo.setPlayerName(name);
-        playerTwo.setPlayerSign(Sign.TOE);
+        playerTwo.createPlayer(name, Sign.TOE);
     }
 
     private void printField() {
@@ -112,8 +117,11 @@ public class Engine implements IEngine {
 
 class main {
     public static void main(String[] args) throws IOException {
-        UI ui = null; // new ConsoleUI(); // new TestUI
-        IEngine engine = new Engine(ui);
+//        UI ui = null; // new ConsoleUI(); // new TestUI
+//        IEngine engine = new Engine(ui);
+//        IEngine engine = new Engine(ui);
+//        engine.startGame();
+        IEngine engine = new Engine();
         engine.startGame();
     }
 }

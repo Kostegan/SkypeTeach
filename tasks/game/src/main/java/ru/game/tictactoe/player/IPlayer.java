@@ -28,8 +28,6 @@ public interface IPlayer {
      */
     void setPlayerSign(Sign sign);
 
-    /**
-     * Sets a marker to a specified cell.
-     */
-    ICell makeMove(ICell cell);
+    IPlayer createPlayer(String name,Sign sign);
+
 }

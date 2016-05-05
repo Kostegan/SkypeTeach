@@ -14,7 +14,7 @@ public class SignTest {
 
     @Test
     public void createCroosSign(){
-        Sign croos = Sign.CROOS;
-        assertEquals("Sign name: ","CROOS",croos.name());
+        Sign croos = Sign.CROSS;
+        assertEquals("Sign name: ","CROSS",croos.name());
     }
 }

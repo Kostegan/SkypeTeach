@@ -3,13 +3,10 @@ package ru.game.tictactoe.field;
 import ru.game.tictactoe.cell.Cell;
 import ru.game.tictactoe.cell.ICell;
 
-import java.util.Map;
-
 /**
  *
  */
 public class Field implements IField {
-
     private Cell[][] field = new Cell[3][3];
 
     public Field() {
@@ -77,6 +74,18 @@ public class Field implements IField {
 
     interface RunOnFieldCallback {
         boolean doCellAction(Cell cell, Cell[] row, int rowIndex, int colIndex);
+    }
+
+    @Override
+    public boolean isFieldFilled() {
+        for(ICell[] cells:field){
+            for(ICell cell:cells){
+                if(cell.getSign()==null){
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 }
 
