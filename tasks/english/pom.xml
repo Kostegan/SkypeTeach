@@ -13,7 +13,7 @@
 
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>game</artifactId>
+    <artifactId>english</artifactId>
     <packaging>jar</packaging>
 
     <name>Game By Skype</name>

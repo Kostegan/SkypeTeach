@@ -3,5 +3,5 @@ package ru.english.word;
 /**
  *
  */
-public class IWord {
+public interface IWord {
 }
