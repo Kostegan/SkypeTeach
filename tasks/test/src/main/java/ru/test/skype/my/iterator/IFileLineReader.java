@@ -6,6 +6,6 @@ import java.util.Iterator;
 /**
  *
  */
-public interface IFileLineReader extends Iterable<String> {
+public interface IFileLineReader extends Iterator<String>, Iterable<String> {
     Iterable<String> readFile(String filename) throws IOException;
 }

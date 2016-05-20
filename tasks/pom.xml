@@ -24,6 +24,7 @@
         <module>internal</module>
         <module>downloader</module>
         <module>test</module>
+        <module>periods</module>
         <module>map</module>
         <module>mysql</module>
         <module>game</module>
