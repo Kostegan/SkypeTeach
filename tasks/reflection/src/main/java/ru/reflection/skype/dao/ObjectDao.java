@@ -21,7 +21,6 @@ public class ObjectDao implements IObjectDao {
         IFactoryScheme factory = new FactoryScheme();
         IScheme schemeTemp = factory.parseScheme(scheme);
         StringBuilder sb = new StringBuilder("INSERT (");
-        // from fields
         sb.append(schemeTemp.getFields().get(0).getColName());
         sb.append(",");
         sb.append(schemeTemp.getFields().get(1).getColName());
@@ -31,9 +30,11 @@ public class ObjectDao implements IObjectDao {
         sb.append(reflectionResult.get(0));
         sb.append("',");
         sb.append(reflectionResult.get(1));
-        // reflection from object
         sb.append(") INTO ");
         sb.append(schemeTemp.getTableName());
+
+//        String pattern = "INSERT (%s) VALUES (%s) INTO %s";
+//        String sql = String.format(pattern, "name, age", "kolya, 23", "users");
 
         System.out.println("SQL: " + sb);
     }
@@ -41,12 +42,14 @@ public class ObjectDao implements IObjectDao {
     private ArrayList<Object> reflectObject(String className, Object obj) throws Exception, InappropriateObjectException {
         ArrayList<Object> results = new ArrayList<>();
         Class cls = Class.forName(className);
+
         Field[] fields = cls.getDeclaredFields();
 //        Method[] methods = cls.getDeclaredMethods();
         if (fields.length == 2 ) {
             for (int i = 0; i < fields.length; i++) {
                 String fieldName = fields[i].getName();
                 String getMethodName = "get" + Character.toUpperCase(fieldName.charAt(0)) + fieldName.substring(1);
+//                checksMethod(cls,getMethodName);
                 Method method = cls.getMethod(getMethodName);
                 Object result = method.invoke(obj);
                 results.add(result);
@@ -57,6 +60,15 @@ public class ObjectDao implements IObjectDao {
 
         return results;
     }
+
+    private Object getFieldValue(Object object, String fieldName) {
+        return null;
+    }
+
+//    private Method checksMethod(Class cls, String getMethodName){
+//        Method method;
+//        return method = cls.getMethod(getMethodName);
+//    }
 }
 
 

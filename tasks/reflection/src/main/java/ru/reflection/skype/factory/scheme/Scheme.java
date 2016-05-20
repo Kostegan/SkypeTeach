@@ -41,7 +41,7 @@ public class Scheme implements IScheme {
     }
 
     @Override
-    public void setFieldsName(String fieldName, String columnName) {
+    public void setFieldName(String fieldName, String columnName) {
         ISchemeField field = new SchemeField(fieldName,columnName);
         fields.add(field);
     }

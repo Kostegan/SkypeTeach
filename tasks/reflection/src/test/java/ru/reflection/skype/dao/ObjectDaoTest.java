@@ -17,9 +17,10 @@ public class ObjectDaoTest {
 
     @Test
     public void savePerson() throws Exception,NotCorrectSchemeException,InappropriateObjectException{
-        String scheme = "package ru.reflection.skype.person.Person=users [name=NAME, age=PERSON_AGE]";
+        String scheme = "ru.reflection.skype.person.Person=users [name=NAME, age=PERSON_AGE]";
         Person person = new Person("Viktor",39);
         IObjectDao dao = createObjectDao();
         dao.save(person,scheme);
     }
+
 }

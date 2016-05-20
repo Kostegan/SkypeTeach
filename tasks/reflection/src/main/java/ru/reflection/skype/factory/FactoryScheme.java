@@ -24,15 +24,17 @@ public class FactoryScheme implements IFactoryScheme {
     @Override
     public IScheme parseScheme(String scheme) throws NotCorrectSchemeException {
         IScheme schemeTemp = new Scheme();
-        String pattern = "([A-Za-z.]+)=([a-z]+)\\W\\[([a-zA-Z]+)=([a-zA-Z]+),\\W*([a-zA-Z]+)=([a-zA-Z_]+)\\]";
+        String classNamePattern = "([A-Za-z.]+)";
+        String tableNamePattern = "([a-z]+)";
+        String pattern = classNamePattern + "=" + tableNamePattern + "\\W\\[([a-zA-Z]+)=([a-zA-Z]+),\\W*([a-zA-Z]+)=([a-zA-Z_]+)\\]";
         Pattern p = Pattern.compile(pattern);
         Matcher matcher = p.matcher(scheme);
         if (matcher.find()) {
                 for (int i = 0; i <= matcher.groupCount(); i++) {
                     schemeTemp.setClassName(matcher.group(1));
                     schemeTemp.setTableName(matcher.group(2));
-                    schemeTemp.setFieldsName(matcher.group(3), matcher.group(4));
-                    schemeTemp.setFieldsName(matcher.group(5), matcher.group(6));
+                    schemeTemp.setFieldName(matcher.group(3), matcher.group(4));
+                    schemeTemp.setFieldName(matcher.group(5), matcher.group(6));
             }
         } else {
             throw new NotCorrectSchemeException("Specified scheme is not correct. Correct format a scheme is: ClassName=TableName [nameField=TableColName,nameField=TableColName]");

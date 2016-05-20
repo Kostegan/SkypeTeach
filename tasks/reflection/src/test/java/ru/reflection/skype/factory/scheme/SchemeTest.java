@@ -20,8 +20,8 @@ public class SchemeTest {
         IScheme scheme = new Scheme();
         scheme.setClassName(className);
         scheme.setTableName(tableName);
-        scheme.setFieldsName(firstFieldName, firstColumnName);
-        scheme.setFieldsName(secondFieldName, secondColumnName);
+        scheme.setFieldName(firstFieldName, firstColumnName);
+        scheme.setFieldName(secondFieldName, secondColumnName);
         assertEquals("Class name is: ", className, scheme.getClassName());
         assertEquals("Table name is: ", tableName, scheme.getTableName());
         ArrayList<ISchemeField> fields = scheme.getFields();
