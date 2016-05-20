@@ -22,6 +22,7 @@
     <modules>
         <module>tree</module>
         <module>internal</module>
+        <module>downloader</module>
         <module>test</module>
         <module>map</module>
         <module>mysql</module>
