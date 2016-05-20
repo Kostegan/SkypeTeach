@@ -1,5 +1,6 @@
 package ru.teach.skype.types;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,6 +10,7 @@ import java.util.List;
 public class ListTeach {
     public static void main(String[] args) {
         List<String> list = new ArrayList<>();
+        List<Button> list2 = new ArrayList<>();
 
         list.add("1");
         list.add("2");

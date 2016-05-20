@@ -18,12 +18,12 @@ public class DatabaseTeach {
 //        String pass = "root";
 //        String user = "root";
 
-        Connection connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1/teach","root", "root");
+        Connection connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1/internet_shop","root", "root");
         Statement statement = connection.createStatement();
 //        statement.execute("CREATE TABLE users (id int primary key, name varchar(50) unique, )");
 
         List<User> users = new ArrayList<>();
-        ResultSet rs = statement.executeQuery("SELECT id, name, age FROM users WHERE age>30;");
+        ResultSet rs = statement.executeQuery("SELECT * FROM users WHERE id = 48 AND name='Filip22' AND email='filip@filip.com'");
         while (rs.next()) {
             int id = rs.getInt("id");
             String name = rs.getString("name");
@@ -35,6 +35,24 @@ public class DatabaseTeach {
             user.setAge(age);
             users.add(user);
         }
+
+//        Connection connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1/teach","root", "root");
+//        Statement statement = connection.createStatement();
+////        statement.execute("CREATE TABLE users (id int primary key, name varchar(50) unique, )");
+//
+//        List<User> users = new ArrayList<>();
+//        ResultSet rs = statement.executeQuery("SELECT id, name, age FROM users WHERE age>30;");
+//        while (rs.next()) {
+//            int id = rs.getInt("id");
+//            String name = rs.getString("name");
+//            int age = rs.getInt("age");
+//
+//            User user = new User();
+//            user.setId(id);
+//            user.setName(name);
+//            user.setAge(age);
+//            users.add(user);
+//        }
 
         for(User user: users){
             System.out.println(user.printUser());

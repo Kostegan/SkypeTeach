@@ -1,0 +1,33 @@
+package ru.reflection.skype.person;
+
+/**
+ *
+ */
+public class Person1 {
+    private String name;
+    private Integer age;
+
+    public Person1() {
+    }
+
+    public Person1(String name, Integer age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Integer getAge() {
+        return age;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
+    }
+}
