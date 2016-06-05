@@ -62,6 +62,7 @@ public class HttpConnection {
 class Main {
 
     public static void main(String[] args)throws MalformedURLException {
+        String s;
         System.out.println(HttpConnection.getHtmlByURL(HttpConnection.getURLFromString("https://e.mail.ru/cgi-bin/readmsg?from_mra_mail=1&id=14648670310000000956&lang=ru")));
     }
 }
