@@ -3,5 +3,5 @@ package ru.assistant.items;
 /**
  *
  */
-public class IAssistant {
+public interface IAssistant {
 }
