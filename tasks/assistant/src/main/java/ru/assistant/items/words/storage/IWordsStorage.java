@@ -21,7 +21,7 @@ public interface IWordsStorage {
     public IWord getWordByKey(int key);
 
     /**
-     * @return all words from a storage.
+     * @return all words from a storage or null  if a storage is empty.
      */
     public List<IWord> getWords();
 }
