@@ -1,4 +1,4 @@
-package ru.assistant.items.texts.factory;
+package ru.assistant.items.texts;
 
 /**
  *

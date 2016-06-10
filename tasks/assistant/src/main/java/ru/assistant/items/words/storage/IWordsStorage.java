@@ -2,6 +2,8 @@ package ru.assistant.items.words.storage;
 
 import ru.assistant.items.words.word.IWord;
 
+import java.util.List;
+
 /**
  * Saves all word in a base. Represents methods for adding and getting a word by specified key, or get all words.
  */
@@ -12,7 +14,14 @@ public interface IWordsStorage {
      */
     public void addWord(IWord word);
 
+    /**
+     * @param key for a word that need find.
+     * @return word by key, return null if the key is invalid.
+     */
     public IWord getWordByKey(int key);
 
-    public void getWords();
+    /**
+     * @return all words from a storage.
+     */
+    public List<IWord> getWords();
 }
