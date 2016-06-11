@@ -1,6 +1,7 @@
 package ru.assistant.items.words.storage;
 
 import ru.assistant.items.words.word.IWord;
+import ru.assistant.items.words.word.Word;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -23,7 +24,7 @@ public class WordsStorage implements IWordsStorage {
     @Override
     public void addWord(IWord word) {
         Integer key = word.getKey();
-        if (storage.put(key, word) != null) {
+        if (storage.put(key, word) == null) {
             keysList.add(key);
         }
     }
@@ -46,3 +47,4 @@ public class WordsStorage implements IWordsStorage {
         return null;
     }
 }
+
