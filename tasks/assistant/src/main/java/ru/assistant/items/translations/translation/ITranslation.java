@@ -42,10 +42,10 @@ public interface ITranslation {
     /**
      * @return words list for a specified PartOfSpeech.
      */
-    public Map<Integer,IWord> getTranslation(PartOfSpeech partOfSpeech);
+    public List<IWord> getTranslation(PartOfSpeech partOfSpeech);
 
     /**
-     * @return a list with all keys of added words.
+     * @return a list with all translation part of speech.
      */
-    public List<Integer> getKeys();
+    public List<PartOfSpeech> getTranslationPartOfSpeech();
 }
