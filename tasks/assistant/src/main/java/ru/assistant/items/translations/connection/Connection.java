@@ -6,7 +6,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 /**
- *
+ * Class which will be responsible for connections with sites which will be translate words.
  */
 public class Connection {
 
