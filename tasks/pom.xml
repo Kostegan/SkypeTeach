@@ -20,6 +20,7 @@
     <name>Tasks for learning</name>
 
     <modules>
+        <module>assistant</module>
         <module>tree</module>
         <module>internal</module>
         <module>english</module>
