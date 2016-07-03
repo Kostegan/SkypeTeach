@@ -1,5 +1,7 @@
 package ru.assistant.items.words.storage;
 
+import ru.assistant.items.words.storage.exception.StorageIsEmptyException;
+import ru.assistant.items.words.storage.exception.WordKeyInvalidException;
 import ru.assistant.items.words.word.IWord;
 
 import java.util.List;
@@ -18,10 +20,12 @@ public interface IWordsStorage {
      * @param key for a word that need find.
      * @return word by key, return null if the key is invalid.
      */
-    public IWord getWordByKey(int key);
+    public IWord getWordByKey(int key) throws WordKeyInvalidException;
+
 
     /**
-     * @return all words from a storage or null  if a storage is empty.
+     * @return all words from a storage.
+     * @throws StorageIsEmptyException if a storage is empty.
      */
-    public List<IWord> getWords();
+    public List<IWord> getWords() throws StorageIsEmptyException;
 }

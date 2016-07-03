@@ -1,4 +1,4 @@
-package ru.assistant.items.translations.connection;
+package ru.assistant.items.translations.translator;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -8,7 +8,7 @@ import java.net.URL;
 /**
  * Class which will be responsible for connections with sites which will be translate words.
  */
-public class Connection {
+public class Translator {
 
     public static String getHtml(String urlToRead) {
         URL url;
@@ -16,7 +16,6 @@ public class Connection {
         BufferedReader rd;
         String line;
         StringBuilder resultBuilder = new StringBuilder();
-        String result = "";
         try {
             url = new URL(urlToRead);
             conn = (HttpURLConnection) url.openConnection();
@@ -26,13 +25,11 @@ public class Connection {
             while ((line = rd.readLine()) != null) {
                 resultBuilder.append(line);
                 resultBuilder.append("\n");
-//                result += line;
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
         return resultBuilder.toString();
-//        return result;
     }
 }
 

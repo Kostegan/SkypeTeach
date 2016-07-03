@@ -1,6 +1,6 @@
 package ru.assistant.items.translations.html.creator;
 
-import ru.assistant.items.translations.connection.Connection;
+import ru.assistant.items.translations.translator.Translator;
 import ru.assistant.items.words.word.IWord;
 
 /**
@@ -26,7 +26,7 @@ public class HtmlCreator implements IHtmlCreator {
 
     @Override
     public void createRequest(IWord word) {
-        response = Connection.getHtml(url += word.getName());
+        response = Translator.getHtml(url += word.getName());
     }
 
     @Override

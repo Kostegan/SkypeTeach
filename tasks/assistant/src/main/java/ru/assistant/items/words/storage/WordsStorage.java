@@ -1,7 +1,8 @@
 package ru.assistant.items.words.storage;
 
+import ru.assistant.items.words.storage.exception.StorageIsEmptyException;
+import ru.assistant.items.words.storage.exception.WordKeyInvalidException;
 import ru.assistant.items.words.word.IWord;
-import ru.assistant.items.words.word.Word;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -19,8 +20,6 @@ public class WordsStorage implements IWordsStorage {
         storage = new HashMap<>();
         keysList = new ArrayList<>();
     }
-
-
     @Override
     public void addWord(IWord word) {
         Integer key = word.getKey();
@@ -28,23 +27,26 @@ public class WordsStorage implements IWordsStorage {
             keysList.add(key);
         }
     }
-
     @Override
-    public IWord getWordByKey(int key) {
-        return storage.get(key);
+    public IWord getWordByKey(int key) throws WordKeyInvalidException {
+        if (storage.containsKey(key)) {
+            return storage.get(key);
+        } else {
+            throw new WordKeyInvalidException("Key: " + key + " is invalid.");
+        }
     }
 
     @Override
-    public List<IWord> getWords() {
+    public List<IWord> getWords() throws StorageIsEmptyException {
         List<IWord> wordsList;
-        if (storage.size() > 0) {
+        if (!storage.isEmpty()) {
             wordsList = new ArrayList<>();
             for (Integer key : keysList) {
                 wordsList.add(storage.get(key));
             }
             return wordsList;
         }
-        return null;
+        throw new StorageIsEmptyException("Storage is empty.");
     }
 }
 
