@@ -21,6 +21,7 @@
 
     <modules>
         <module>assistant</module>
+        <module>light</module>
         <module>tree</module>
         <module>internal</module>
         <module>english</module>
