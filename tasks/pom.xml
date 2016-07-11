@@ -22,6 +22,7 @@
     <modules>
         <module>assistant</module>
         <module>tree</module>
+        <module>light</module>
         <module>internal</module>
         <module>english</module>
         <module>downloader</module>
