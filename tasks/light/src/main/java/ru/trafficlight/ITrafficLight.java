@@ -1,5 +1,7 @@
 package ru.trafficlight;
 
+import ru.trafficlight.light.exception.InvalidTimeException;
+
 /**
  * Class can show a color at the specified time.
  */
@@ -13,5 +15,10 @@ public interface ITrafficLight {
 //    Color showColorByMin(int time);
 
 
-    String showColorByMin(int min);
+    String showColorByMin(int min) throws InvalidTimeException;
+
+    /**
+     * User writes a minute and  "TrafficLight" prints a color which will be shined in this minute.
+     */
+    void printColorByMinute();
 }

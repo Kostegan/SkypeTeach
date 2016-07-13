@@ -78,5 +78,8 @@ public class TrafficLight implements ITrafficLight {
 //        return null;
     }
 
+    @Override
+    public void printColorByMinute() {
 
+    }
 }

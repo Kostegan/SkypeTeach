@@ -3,6 +3,7 @@ package ru.trafficlight.light;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
+import ru.trafficlight.light.exception.InvalidTimeException;
 
 /**
  *
@@ -10,7 +11,7 @@ import org.junit.Test;
 public class lightTest {
 
     @Test
-    public void getCurrentTime() {
+    public void getCurrentTime() throws InvalidTimeException{
         ILight light = new Light();
         assertEquals("Current time is: ", 0, light.getCurrentTime());
         light.setCurrentTime(23);
@@ -18,7 +19,7 @@ public class lightTest {
     }
 
     @Test
-    public void getCurrentColor(){
+    public void getCurrentColor() throws InvalidTimeException{
         ILight light = new Light();
         assertEquals("Current color is: ","Green",light.getCurrentColor().toString());
         light.setCurrentTime(3);
