@@ -1,4 +1,4 @@
-package ru.trafficlight.exception;
+package ru.trafficlight.light.exception;
 
 /**
  *

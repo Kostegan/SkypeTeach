@@ -1,4 +1,4 @@
-package ru.trafficlight.color;
+package ru.trafficlight.light.color;
 
 /**
  *

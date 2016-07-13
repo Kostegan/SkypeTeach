@@ -1,9 +1,7 @@
 package ru.trafficlight;
 
-import ru.trafficlight.color.Color;
-import ru.trafficlight.exception.InvalidTimeException;
-
-import java.util.Scanner;
+import ru.trafficlight.light.color.Color;
+import ru.trafficlight.light.exception.InvalidTimeException;
 
 /**
  *
@@ -14,32 +12,39 @@ public class TrafficLight implements ITrafficLight {
     }
 
 
-    @Override
-    public Color defineColor(int time) {
-        checkTimeOnValid(time);
-        return defineColorByTime(optimizesTime(time));
-    }
+//
+//    private Color showColorByMin(int time) throws InvalidTimeException {
+//        checkTimeOnValid(time);
+//        return defineColorByTime(optimizesTime(time));
+//    }
 
-    private void checkTimeOnValid(int time) {
+    /**
+     * Time must be a positive number.
+     *
+     * @param time which will be checked on a validity.
+     * @throws InvalidTimeException if time is not a positive number.
+     */
+    private void checkTimeOnValid(int time) throws InvalidTimeException {
         if (time < 0) {
-//            throw new InvalidTimeException("Value a specified time: "+time+" in invalid. Value must be positive numbers");
-            System.out.println(" Value must be positive numbers");
+            throw new InvalidTimeException("Value a specified time: " + time + " is invalid. Value must be positive numbers.");
         }
     }
 
     /**
      * Parses a specified time, delete all digits except a last.
+     *
      * @param time which will be parse.
      * @return a last digit.
      */
-    private int optimizesTime(int time){
-        String str = time+"";
-        str = str.substring(str.length()-1);
+    private int optimizesTime(int time) {
+        String str = time + "";
+        str = str.substring(str.length() - 1);
         return Integer.parseInt(str);
     }
 
     /**
      * Define a color in a specified time.
+     *
      * @param time
      * @return
      */
@@ -49,16 +54,29 @@ public class TrafficLight implements ITrafficLight {
             color = Color.Green;
         } else if (time <= 5) {
             color = Color.Yellow;
-        }else {
+        } else {
             color = Color.Red;
         }
         return color;
     }
 
     @Override
-    public void printColor() {
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Enter minute: ");
-        System.out.println("Traffic light has a \""+defineColor(sc.nextInt()).toString()+"\" color.");
+    public String showColorByMin(int time) {
+        String colorName;
+        try {
+            checkTimeOnValid(time);
+            defineColorByTime(time);
+            return "";
+        } catch (InvalidTimeException e) {
+            e.printStackTrace();
+        }
+        return "Specified time must be positive numbers. ";
+
+//        Scanner sc = new Scanner(System.in);
+//        System.out.println("Enter minute: ");
+//        System.out.println("Traffic light has a \""+showColorByMin(sc.nextInt()).toString()+"\" color.");
+//        return null;
     }
+
+
 }
